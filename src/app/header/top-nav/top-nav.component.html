@@ -1,0 +1,31 @@
+<header>
+    <nav class="navbar navbar-expand-xl navbar-dark py-0">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="home/">
+                <img src="../assets/images/logo.png" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="social-icons">
+                    <li><a class="igLogo" href="https://www.instagram.com/the_rohangosavi/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a class="fbLogo" href="https://www.facebook.com/therohangosavi" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a class="ytLogo" href="https://www.youtube.com/@RohanGosavi/featured" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li *ngFor="let link of navLinks" [class.sub-menu]="link.subLinks?.length">
+                        <a [href]="link.link">{{ link.name }}</a>
+                        <ul *ngIf="link.subLinks" class="sublinks">
+                            <li *ngFor="let subLink of link.subLinks">
+                                <a [href]="subLink.link">{{ subLink.name }}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <button type="button" class="btn btn-info">Contact Us</button>
+            </div>
+        </div>
+    </nav>
+</header>
