@@ -17,28 +17,7 @@ export class IntroComponent {
   isLoading = false;
   currentPage = 1;
   itemsPerPage = 10;
-  // @HostListener('window:scroll', ['$event'])
-  // onScroll(event: any) {
-  //   const windowHeight =
-  //     'innerHeight' in window
-  //       ? window.innerHeight
-  //       : document.documentElement.offsetHeight;
-  //   const body = document.body;
-  //   const html = document.documentElement;
-  //   const docHeight = Math.max(
-  //     body.scrollHeight,
-  //     body.offsetHeight,
-  //     html.clientHeight,
-  //     html.scrollHeight,
-  //     html.offsetHeight
-  //   );
-
-  //   const windowBottom = windowHeight + window.pageYOffset;
-
-  //   if (windowBottom >= docHeight && !this.isLoading) {
-  //     this.loadMorePosts();
-  //   }
-  // }
+  
   constructor(
     private http: HttpClient,
     private igService: InstagramServiceService,
