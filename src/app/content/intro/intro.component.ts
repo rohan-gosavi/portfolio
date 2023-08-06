@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { InstagramServiceService } from 'src/app/services/instagram-service.service';
 
@@ -9,42 +9,51 @@ import { InstagramServiceService } from 'src/app/services/instagram-service.serv
 })
 export class IntroComponent {
   accessToken =
-    'IGQVJYMG8zNno5SVhpZATVlZAGZAMbkNON0RwcS1yRGgtQjBzS2xZAN3B3VjRLb1g2UVRTR3ZA3UFVRQ3F4N2lHY21NSWZAUaXNSUnkxY2ZANUTBqNDEwTEtDS3VIMEJvelc4cWNkWTFEWnFBdS1raEgxY3RRagZDZD';
+    'IGQVJXYTBlNmhpR0hEVlRRdGxJSW45TEpjMEFjcU4zZA0g4TXp4eHhZAbTVKMFVMR2lhNFBzT0FzdWVfU3FsenJ4YmtLY1YyYjRwUkxSRzNDTXV0TWhEd3FGV3U1U19IUTlqYlBpUndmYzR4TW9yLUk2bQZDZD';
   posts: any = [];
   reels: any;
+  private observer!: IntersectionObserver;
+
   isLoading = false;
   currentPage = 1;
   itemsPerPage = 10;
-  @HostListener('window:scroll', ['$event'])
-  onScroll(event: any) {
-    const windowHeight =
-      'innerHeight' in window
-        ? window.innerHeight
-        : document.documentElement.offsetHeight;
-    const body = document.body;
-    const html = document.documentElement;
-    const docHeight = Math.max(
-      body.scrollHeight,
-      body.offsetHeight,
-      html.clientHeight,
-      html.scrollHeight,
-      html.offsetHeight
-    );
+  // @HostListener('window:scroll', ['$event'])
+  // onScroll(event: any) {
+  //   const windowHeight =
+  //     'innerHeight' in window
+  //       ? window.innerHeight
+  //       : document.documentElement.offsetHeight;
+  //   const body = document.body;
+  //   const html = document.documentElement;
+  //   const docHeight = Math.max(
+  //     body.scrollHeight,
+  //     body.offsetHeight,
+  //     html.clientHeight,
+  //     html.scrollHeight,
+  //     html.offsetHeight
+  //   );
 
-    const windowBottom = windowHeight + window.pageYOffset;
+  //   const windowBottom = windowHeight + window.pageYOffset;
 
-    if (windowBottom >= docHeight && !this.isLoading) {
-      this.loadMorePosts();
-    }
-  }
+  //   if (windowBottom >= docHeight && !this.isLoading) {
+  //     this.loadMorePosts();
+  //   }
+  // }
   constructor(
     private http: HttpClient,
-    private igService: InstagramServiceService
-  ) {
-    this.loadMorePosts();
-  }
+    private igService: InstagramServiceService,
+    private elementRef: ElementRef
+  ) {}
 
   ngOnInit(): void {
+    const options: IntersectionObserverInit = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1, // Adjust this threshold to your preference for triggering the intersection event
+    };
+
+    this.observer = new IntersectionObserver(this.handleIntersection, options);
+    this.observer.observe(this.elementRef.nativeElement);
     // this.igService.getInstagramImages().subscribe(
     //   (res: string[]) => {
     //     this.posts = res;
@@ -55,7 +64,19 @@ export class IntroComponent {
     // );
   }
 
-  loadMorePosts() {
+  private handleIntersection = (
+    entries: IntersectionObserverEntry[],
+    observer: IntersectionObserver
+  ) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        this.loadContent();
+        observer.unobserve(entry.target);
+      }
+    });
+  };
+
+  private loadContent() {
     this.isLoading = true;
 
     this.igService
