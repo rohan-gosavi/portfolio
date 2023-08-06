@@ -1,3 +1,14 @@
-<section class="content-section">
-    <p>intro works!</p>
+<section class="content-section container-fluid">
+    <section class="banner">
+        <h1 class="bannerText m-0">Rohan Gosavi</h1>
+        <h2 class="m-0">Check out my photos and reels</h2>
+    </section>
+    <section class="grid-container align-items-stretch p-3">
+        <span *ngFor="let post of posts" class="image-container d-block photo-item mb-3" title=".:: {{extractCaption(post.name)}} ::.">
+            <img *ngIf="post.mediaUrl.includes('.webp')" [src]="post.mediaUrl" alt="{{extractCaption(post.name)}}" class="img-fluid w-100">
+            <video *ngIf="post.mediaUrl.includes('.mp4')" class="w-100" controls playOnHover>
+                <source src="{{post.mediaUrl}}" type="video/mp4">
+            </video>
+        </span>
+    </section>
 </section>

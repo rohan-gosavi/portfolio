@@ -12,6 +12,8 @@ import { PhotographyWorkComponent } from './content/work/photography-work/photog
 import { SoftwareWorkComponent } from './content/work/software-work/software-work.component';
 import { HomeComponent } from './home/home.component';
 import { IntroComponent } from './content/intro/intro.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PlayOnHoverDirective } from './directives/play-on-hover.directive';
 
 @NgModule({
   declarations: [
@@ -24,11 +26,13 @@ import { IntroComponent } from './content/intro/intro.component';
     PhotographyWorkComponent,
     SoftwareWorkComponent,
     HomeComponent,
-    IntroComponent
+    IntroComponent,
+    PlayOnHoverDirective
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
