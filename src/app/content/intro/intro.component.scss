@@ -18,7 +18,7 @@
         opacity: 1;
         // border: 5px solid #dddddd;
         box-shadow: 0px 0px 5px 3px #474747;
-        transform: scale(1.1);
+        transform: scale(1.05);
         transition: transform 0.3s ease;
         &::after {
           content: attr(data-caption);
