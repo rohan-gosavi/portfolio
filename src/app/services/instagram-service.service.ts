@@ -70,7 +70,7 @@ export class InstagramServiceService {
     if (cachedData) {
       return of(cachedData);
     } else {
-      let url = `https://graph.instagram.com/me/media?fields=media_url,caption&access_token=${this.accessToken}`;
+      let url = `https://graph.instagram.com/me/media?fields=media_url,caption,timestamp&access_token=${this.accessToken}`;
       // If the page number is greater than 1, append the 'after' query parameter to fetch the next page
       if (page > 1) {
         url += `&after=${this.nextPageCursor}`;

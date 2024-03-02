@@ -91,7 +91,9 @@ export class IntroComponent {
       this.isLoading = true;
       this.igService.getInstagramImages(this.page, this.pageSize).subscribe(
         (response: any) => {
-          this.posts.push(...response.data);
+          this.posts.push(...response.data.filter((d: { media_url: string | string[]; }) => {
+            return d.media_url.includes('.webp')
+          }));
           this.page++;
           this.isLoading = false;
         },
