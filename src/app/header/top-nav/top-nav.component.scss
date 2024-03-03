@@ -13,8 +13,8 @@ header {
 
   .navbar-brand {
     .logo {
-      height: 50px; 
-      width: auto; 
+      height: 50px;
+      width: auto;
     }
     .logo {
       opacity: 1;
@@ -67,14 +67,17 @@ header {
       }
       &.igLogo:hover {
         color: #8a3ab9;
+        transition: all 0.3s ease;
       }
 
       &.fbLogo:hover {
         color: #3b5998;
+        transition: all 0.3s ease;
       }
 
       &.ytLogo:hover {
         color: #c4302b;
+        transition: all 0.3s ease;
       }
     }
   }
@@ -102,24 +105,22 @@ header {
         top: 100%;
         left: 0;
         list-style: none;
-        margin: 2px 0 0 0;
+        border-top: 2px solid $primary-color;
         padding: 0;
-
         li a {
           background-color: #555;
           color: #fff;
           display: block;
           padding: 1rem;
           text-decoration: none;
+          &:hover {
+            background-color: #444;
+            transition: all 0.3s ease;
+          }
         }
       }
 
-      &:hover {
-        background-color: #555;
-        .sublinks {
-          display: block;
-        }
-      }
+      
 
       &.sub-menu {
         position: relative;
@@ -139,6 +140,15 @@ header {
         &.active:before {
           content: "";
           transform: rotate(180deg);
+        }
+      }
+
+      &:hover {
+        background-color: #555;
+        transition: all 0.3s ease;
+        .sublinks {
+          display: block;
+          transition: all 0.3s ease;
         }
       }
     }
