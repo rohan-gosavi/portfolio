@@ -1,9 +1,10 @@
-<section class="content-section container-fluid p-0">
+<div class="content-section container-fluid p-0">
     <section class="banner d-flex justify-content-center align-items-end p-3">
         <!-- <h1 class="bannerText m-0">Rohan Gosavi</h1> -->
         <h2 class="m-0 mb-4 ml-4">Check out my photos</h2>
     </section>
     <section class="grid-container">
+        <!-- <span class="loader"></span> -->
         <span *ngFor="let post of posts" class="image-container" title=".:: {{extractCaption(post.caption)}} ::.">
             <img *ngIf="post.media_url.includes('.webp')" [src]="post.media_url" alt="{{extractCaption(post.caption)}}"
                 class="img-item">
@@ -13,4 +14,4 @@
           <caption class="d-flex justify-content-between"><span>.:: {{extractCaption(post.caption)}} ::. </span><span>{{post.timestamp | date}}</span></caption>
         </span>
     </section>
-</section>
+</div>

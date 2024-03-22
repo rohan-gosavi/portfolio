@@ -1,4 +1,7 @@
+@import "../../../styles.scss";
+
 footer {
+  background-color: $primary-bgColor;
   .mapLocation {
     width: 50%;
     max-width: 700px;

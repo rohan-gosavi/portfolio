@@ -1,23 +1,33 @@
 <header>
-    <nav class="navbar navbar-expand-xl navbar-dark p-0">
+    <nav class="navbar navbar-expand-md navbar-dark p-0">
         <div class="container-fluid">
             <a class="navbar-brand" href="home/">
                 <img class="logo" src="assets/images/logo.png" alt="Logo">
                 <span class="fname">Rohan</span><span class="lname"> Gosavi</span>
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button"
+                aria-label="Toggle navigation" (click)="isMenuOpen = !isMenuOpen">
+                <!-- <span class="navbar-toggler-icon"></span> -->
+                <div class="burger" [ngClass]="{'active': isMenuOpen}">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
             </button>
-            <div class="collapse navbar-collapse justify-content-end pr-2" id="navbarNav">
-                <ul class="social-icons">
-                    <li><a class="igLogo" href="https://www.instagram.com/the_rohangosavi/" target="_blank"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a class="fbLogo" href="https://www.facebook.com/therohangosavi" target="_blank"><i class="fa-brands fa-facebook"></i></a></li>
-                    <li><a class="ytLogo" href="https://www.youtube.com/@RohanGosavi/featured" target="_blank"><i class="fa-brands fa-youtube"></i></a></li>
+            <menu id="navbarNav" class="navbar-collapse navbarNav justify-content-md-end p-3 p-md-0 pr-md-2 m-0"
+                *ngIf="isMenuOpen">
+                <ul class="social-icons mt-0 mt-md-5 mt-md-0">
+                    <li><a class="igLogo" href="https://www.instagram.com/the_rohangosavi/" target="_blank"><i
+                                class="fa-brands fa-instagram"></i></a></li>
+                    <li><a class="fbLogo" href="https://www.facebook.com/therohangosavi" target="_blank"><i
+                                class="fa-brands fa-facebook"></i></a></li>
+                    <li><a class="ytLogo" href="https://www.youtube.com/@RohanGosavi/featured" target="_blank"><i
+                                class="fa-brands fa-youtube"></i></a></li>
                 </ul>
                 <ul class="navbar-nav">
                     <li *ngFor="let link of navLinks" [class.sub-menu]="link.subLinks?.length">
-                        <a [href]="link.link">{{ link.name }}</a>
+                        <span *ngIf="link.subLinks"><a [href]="link.link" (click)="$event.preventDefault">{{ link.name }}</a></span>
+                        <span *ngIf="!link.subLinks"><a [href]="link.link">{{ link.name }}</a></span>
                         <ul *ngIf="link.subLinks" class="sublinks">
                             <li *ngFor="let subLink of link.subLinks">
                                 <a [href]="subLink.link">{{ subLink.name }}</a>
@@ -25,8 +35,8 @@
                         </ul>
                     </li>
                 </ul>
-                <button type="button" class="btn btn-info ml-2">Contact Us</button>
-            </div>
+                <button type="button" [routerLink]="['/']" fragment="contact" class="btn btn-info ml-2" (click)="scrollToElement(); isMenuOpen = false">Contact</button>
+            </menu>
         </div>
     </nav>
 </header>

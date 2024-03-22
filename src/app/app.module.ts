@@ -14,6 +14,8 @@ import { HomeComponent } from './home/home.component';
 import { IntroComponent } from './content/intro/intro.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PlayOnHoverDirective } from './directives/play-on-hover.directive';
+import { HScrollOnHoverDirective } from './directives/HScrollOnHover.directive';
+import { IntoViewDirective } from './directives/intoView.directive';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { PlayOnHoverDirective } from './directives/play-on-hover.directive';
     SoftwareWorkComponent,
     HomeComponent,
     IntroComponent,
-    PlayOnHoverDirective
+    PlayOnHoverDirective,
+    HScrollOnHoverDirective,
+    IntoViewDirective
   ],
   imports: [
     BrowserModule,
