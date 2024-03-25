@@ -26,8 +26,9 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li *ngFor="let link of navLinks" [class.sub-menu]="link.subLinks?.length">
-                        <span *ngIf="link.subLinks"><a [href]="link.link" (click)="$event.preventDefault">{{ link.name }}</a></span>
-                        <span *ngIf="!link.subLinks"><a [href]="link.link">{{ link.name }}</a></span>
+                        <!-- <span *ngIf="link.subLinks"><a [href]="link.link" (click)="$event.preventDefault">{{ link.name }}</a></span>
+                        <span *ngIf="!link.subLinks"><a [href]="link.link">{{ link.name }}</a></span> -->
+                        <a [href]="link.link">{{ link.name }}</a>
                         <ul *ngIf="link.subLinks" class="sublinks">
                             <li *ngFor="let subLink of link.subLinks">
                                 <a [href]="subLink.link">{{ subLink.name }}</a>
