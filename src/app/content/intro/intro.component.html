@@ -286,23 +286,16 @@
     <section id="targetElement3" class="experience scrollable out-of-view"
         [ngClass]="{ 'in-view': element3InView, 'out-of-view': !element3InView }">
         <h2 class="heading m-0">Experience</h2>
-        <ul>
-            <li>
-                <button class="leftBtn" (click)="scrollLeft()"><i class="fa fa-circle-chevron-left"></i></button>
-                <button class="rightBtn" (click)="scrollRight()"><i class="fa fa-circle-chevron-right"></i></button>
-            </li>
-        </ul>
-        <div class="exp mt-4" #targetDiv>
-            <div class="company1 cInfo" (mousemove)="onMouseMove($event)">
-                <div class="logo-wrapper">
-                    <span class="cLogo1 cLogo"><img src="assets/images/kanni-logo.webp"
-                            alt="Kanini Logo"></span>
-                    <span class="cName text-bold d-flex justify-content-between flex-wrap"><span
+        <div class="exp mt-4" #targetDiv appHScrollOnHover>
+            <article class="company1 cInfo" (mousemove)="onMouseMove($event)">
+                <div class="details-wrapper">
+                    <span class="cLogo1 cLogo"><img src="assets/images/kanni-logo.webp" alt="Kanini Logo"></span>
+                    <span class="cName text-bold d-flex justify-content-between flex-wrap pb-1"><span
                             class="designation">Senior
                             Developer
                         </span>Kanini Software Solutions Pvt
                         Ltd</span>
-                    <span class="roleDetails d-inline-block mt-4">
+                    <span class="roleDetails d-inline-block mt-3">
                         <ul>
                             <li>
                                 Development of a sophisticated web application for a US-based client, utilizing
@@ -325,17 +318,16 @@
                         </ul>
                     </span>
                 </div>
-            </div>
-            <div class="company2 cInfo" (mousemove)="onMouseMove($event)">
-                <div class="logo-wrapper">
-                    <span class="cLogo2 cLogo"><img src="assets/images/scorg-logo.png"
-                            alt="Kanini Logo"></span>
+            </article>
+            <article class="company2 cInfo" (mousemove)="onMouseMove($event)">
+                <div class="details-wrapper">
+                    <span class="cLogo2 cLogo"><img src="assets/images/scorg-logo.png" alt="Kanini Logo"></span>
 
-                    <span class="cName text-bold d-flex justify-content-between flex-wrap"><span
+                    <span class="cName text-bold d-flex justify-content-between flex-wrap pb-1"><span
                             class="designation">UI/UX
                             Developer </span>SCORG Technologies Pvt
                         Ltd</span>
-                    <span class="roleDetails d-inline-block mt-4">
+                    <span class="roleDetails d-inline-block mt-3">
                         <ul>
                             <li>Development of Complex Health care application for Multiple Hospitals across India using
                                 <strong>Angular, HTML, CSS</strong>
@@ -353,17 +345,16 @@
                         </ul>
                     </span>
                 </div>
-            </div>
-            <div class="company3 cInfo" (mousemove)="onMouseMove($event)">
-                <div class="logo-wrapper">
-                    <span class="cLogo3 cLogo"><img src="assets/images/pivotroots-logo.svg"
-                            alt="Kanini Logo"></span>
+            </article>
+            <article class="company3 cInfo" (mousemove)="onMouseMove($event)">
+                <div class="details-wrapper">
+                    <span class="cLogo3 cLogo"><img src="assets/images/pivotroots-logo.svg" alt="Kanini Logo"></span>
 
-                    <span class="cName text-bold d-flex justify-content-between flex-wrap"><span
+                    <span class="cName text-bold d-flex justify-content-between flex-wrap pb-1"><span
                             class="designation">Experiential
                             Developer </span>Pivotroots Pvt
                         Ltd</span>
-                    <span class="roleDetails d-inline-block mt-4">
+                    <span class="roleDetails d-inline-block mt-3">
                         <ul>
                             <li>Developing and implementing high-quality front-end web applications using
                                 <strong>Angular,
@@ -377,16 +368,16 @@
                         </ul>
                     </span>
                 </div>
-            </div>
-            <div class="company4 cInfo" (mousemove)="onMouseMove($event)">
-                <div class="logo-wrapper">
-                    <span class="cLogo4 cLogo"><img src="assets/images/emediscene-logo.png"
-                            alt="Kanini Logo"></span>
+            </article>
+            <article class="company4 cInfo" (mousemove)="onMouseMove($event)">
+                <div class="details-wrapper">
+                    <span class="cLogo4 cLogo"><img src="assets/images/emediscene-logo.png" alt="Kanini Logo"></span>
 
-                    <span class="cName text-bold d-flex justify-content-between flex-wrap"><span class="designation">Web
+                    <span class="cName text-bold d-flex justify-content-between flex-wrap"><span
+                            class="designation pb-2">Web
                             Developer
                         </span>Emediscene</span>
-                    <span class="roleDetails d-inline-block mt-4">
+                    <span class="roleDetails d-inline-block mt-3">
                         <ul>
                             <li>Creating and deploying top-tier front-end web applications utilizing <strong>Angular,
                                     HTML, CSS</strong>,
@@ -402,16 +393,16 @@
                         </ul>
                     </span>
                 </div>
-            </div>
-            <div class="company5 cInfo" (mousemove)="onMouseMove($event)">
-                <div class="logo-wrapper">
-                    <span class="cLogo5 cLogo"><img src="assets/images/accenture-logo.png"
-                            alt="Kanini Logo"></span>
+            </article>
+            <article class="company5 cInfo" (mousemove)="onMouseMove($event)">
+                <div class="details-wrapper">
+                    <span class="cLogo5 cLogo"><img src="assets/images/accenture-logo.png" alt="Kanini Logo"></span>
 
-                    <span class="cName text-bold d-flex justify-content-between flex-wrap"><span class="designation">Web
+                    <span class="cName text-bold d-flex justify-content-between flex-wrap"><span
+                            class="designation pb-2">Web
                             Developer
                         </span>Accenture Services Pvt Ltd</span>
-                    <span class="roleDetails d-inline-block mt-4">
+                    <span class="roleDetails d-inline-block mt-3">
                         <ul>
                             <li>Development of Complex websites for multinational clients using <strong>HTML, CSS, JS,
                                     JQuery,
@@ -429,16 +420,17 @@
                         </ul>
                     </span>
                 </div>
-            </div>
-            <div class="company6 cInfo" (mousemove)="onMouseMove($event)">
-                <div class="logo-wrapper">
+            </article>
+            <article class="company6 cInfo" (mousemove)="onMouseMove($event)">
+                <div class="details-wrapper">
                     <span class="cLogo6 cLogo"><img src="assets/images/tis-logo.svg" alt="Kanini Logo"></span>
 
-                    <span class="cName text-bold d-flex justify-content-between flex-wrap"><span class="designation">Web
+                    <span class="cName text-bold d-flex justify-content-between flex-wrap"><span
+                            class="designation pb-2">Web
                             Developer
                         </span>Tata Interactive Systems Pvt
                         Ltd</span>
-                    <span class="roleDetails d-inline-block mt-4">
+                    <span class="roleDetails d-inline-block mt-3">
                         <ul>
                             <li>Development of <strong>Complex E-Learning</strong> websites for Multiple e-learning
                                 solution platforms
@@ -449,7 +441,7 @@
                         </ul>
                     </span>
                 </div>
-            </div>
+            </article>
         </div>
     </section>
     <section id="targetElement4"
@@ -468,4 +460,10 @@
                     class="fa-arrow-alt-circle-right fa ml-2"></i></span>
         </div>
     </section>
+
+    <div class="indicators">
+        <div *ngFor="let indicator of indicators" class="indicator" [style.top.%]="indicator.position">
+            <!-- Indicator content -->
+        </div>
+    </div>
 </div>

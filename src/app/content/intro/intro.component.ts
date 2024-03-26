@@ -19,6 +19,7 @@ export class IntroComponent {
 
   @ViewChild('contentSection', { static: true })
   contentSection!: ElementRef;
+  indicators: any[] = []; // Array to hold indicator data
 
   isHorizontalScrollEnabled: boolean = false;
   element1InView: boolean = false;
@@ -27,13 +28,38 @@ export class IntroComponent {
   element4InView: boolean = false;
 
   constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
-
-  ngOnInit(): void {}
   @HostListener('window:scroll', [])
   @HostListener('document:mousemove', ['$event'])
+  ngOnInit(): void {}
+  ngAfterViewInit() {
+    this.contentSection.nativeElement.addEventListener(
+      'scroll',
+      this.updateIndicators.bind(this)
+    );
+  }
 
+  updateIndicators() {
+    const scrollTop = this.contentSection.nativeElement.scrollTop;
+    const scrollHeight = this.contentSection.nativeElement.scrollHeight;
+    const clientHeight = this.contentSection.nativeElement.clientHeight;
+
+    // Calculate the scroll percentage and update indicators accordingly
+    // const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+    // Update your indicators based on scrollPercentage
+    const scrollPercentage =
+      (this.contentSection.nativeElement.scrollTop /
+        (this.contentSection.nativeElement.scrollHeight -
+          this.contentSection.nativeElement.clientHeight)) *
+      100;
+    this.indicators = [
+      { position: scrollPercentage },
+      { position: scrollPercentage },
+      { position: scrollPercentage },
+      { position: scrollPercentage },
+      // Add more indicators as needed
+    ];
+  }
   onScroll(): void {
-    
     this.element1InView = this.checkElementInView('#targetElement1');
     this.element2InView = this.checkElementInView('#targetElement2');
     this.element3InView = this.checkElementInView('#targetElement3');
@@ -58,13 +84,5 @@ export class IntroComponent {
       card.style.setProperty('--mouse-x', `${x}px`);
       card.style.setProperty('--mouse-y', `${y}px`);
     });
-  }
-
-  public scrollRight(): void {
-    this.targetDiv.nativeElement.scrollTo({ left: (this.targetDiv.nativeElement.scrollLeft + 150), behavior: 'smooth' });
-  }
-
-  public scrollLeft(): void {
-    this.targetDiv.nativeElement.scrollTo({ left: (this.targetDiv.nativeElement.scrollLeft - 150), behavior: 'smooth' });
   }
 }

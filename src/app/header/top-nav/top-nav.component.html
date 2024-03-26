@@ -28,15 +28,15 @@
                     <li *ngFor="let link of navLinks" [class.sub-menu]="link.subLinks?.length">
                         <!-- <span *ngIf="link.subLinks"><a [href]="link.link" (click)="$event.preventDefault">{{ link.name }}</a></span>
                         <span *ngIf="!link.subLinks"><a [href]="link.link">{{ link.name }}</a></span> -->
-                        <a [href]="link.link">{{ link.name }}</a>
+                        <a [routerLink]="link.link" (click)="$event.preventDefault()">{{ link.name }}</a>
                         <ul *ngIf="link.subLinks" class="sublinks">
                             <li *ngFor="let subLink of link.subLinks">
-                                <a [href]="subLink.link">{{ subLink.name }}</a>
+                                <a [routerLink]="subLink.link" (click)="$event.preventDefault()">{{ subLink.name }}</a>
                             </li>
                         </ul>
                     </li>
                 </ul>
-                <button type="button" [routerLink]="['/']" fragment="contact" class="btn btn-info ml-2" (click)="scrollToElement(); isMenuOpen = false">Contact</button>
+                <button type="button" [routerLink]="['/']" fragment="contact" class="btn btn-info ml-2" (click)="scrollToElement();">Contact</button>
             </menu>
         </div>
     </nav>

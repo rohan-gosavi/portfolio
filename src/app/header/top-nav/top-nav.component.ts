@@ -16,7 +16,7 @@ export class TopNavComponent {
         { name: 'Photography', link: 'work/photography-work/' },
         { name: 'Software', link: 'work/software-work/' },
       ],
-      link: '#'
+      link: '#',
     },
     // {
     //   name: 'Services',
@@ -28,6 +28,7 @@ export class TopNavComponent {
     { name: 'About Us', link: 'about/' },
   ];
   isMenuOpen: boolean | undefined;
+  innerWidth: number = 768;
 
   constructor(
     private elementRef: ElementRef,
@@ -38,6 +39,7 @@ export class TopNavComponent {
   @HostListener('window:resize', ['$event'])
   ngOnInit() {
     this.isMenuOpen = window.innerWidth >= 768;
+    this.innerWidth = window.innerWidth;
 
     // Scroll to the contact section when the fragment changes
     this.router.events
@@ -67,6 +69,9 @@ export class TopNavComponent {
         inline: 'nearest',
       });
     }
+    // if(this.innerWidth <= 768){
+    //   this.isMenuOpen = false
+    // }
   }
 }
 

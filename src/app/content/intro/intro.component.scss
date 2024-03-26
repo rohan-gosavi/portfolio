@@ -352,15 +352,15 @@
     .exp {
       display: flex;
       flex-wrap: nowrap;
-      gap: 70px;
+      gap: 2rem;
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
       overflow-x: auto;
       width: 80dvw;
-      padding: 0 90px 50px 0;
+      padding: 0 4rem 50px 0;
       @media screen and (max-width: 768px) {
         padding: 0 20px 50px 0;
-        gap: 10px;
+        gap: 1rem;
         width: 100dvw;
       }
       .cInfo {
@@ -375,21 +375,42 @@
         @media screen and (max-width: 768px) {
           min-width: 80svw;
         }
-        .logo-wrapper {
+        .details-wrapper {
           position: relative;
-          padding: 20px 30px;
+          padding: 1.5rem 2rem;
           height: calc(100% - 6px);
           width: calc(100% - 6px);
           z-index: 4;
           background-color: #353535;
           border-radius: 10px;
-          opacity: 0.9;
+          // opacity: 0.9;
+          border-radius: inherit;
+
+          @media screen and (max-width: 768px) {
+            padding: 1rem;
+          }
           .cName {
             font-size: 20px;
             font-weight: 700;
             column-gap: 10px;
+            position: relative;
             @media screen and (max-width: 768px) {
               font-size: 14px;
+            }
+            &:after {
+              content: "";
+              position: absolute;
+              left: 0;
+              bottom: -1px;
+              width: 100%;
+              height: 1px;
+              background: linear-gradient(
+                to right,
+                transparent,
+                #9b9b9b,
+                transparent
+              );
+              z-index: -1;
             }
           }
           .roleDetails {
@@ -471,18 +492,20 @@
         &::before {
           background: radial-gradient(
             800px circle at var(--mouse-x) var(--mouse-y),
-            rgba(255, 255, 255, 0.06),
+            rgba(23, 128, 177, 0.1),
             transparent 40%
           );
           z-index: 3;
+          border-radius: inherit;
         }
         &::after {
           background: radial-gradient(
             600px circle at var(--mouse-x) var(--mouse-y),
-            rgba(119, 119, 119, 0.4),
+            rgba(23, 128, 177, 0.4),
             transparent 40%
           );
           z-index: 1;
+          border-radius: inherit;
         }
         &::before,
         &::after {
@@ -507,14 +530,14 @@
     &:before {
       content: "";
       position: absolute;
-      bottom: -4px;
+      bottom: 0;
       left: -3rem;
       width: 36rem;
       height: 24rem;
       background: url(../../../assets/images/exp.svg) no-repeat;
       background-size: contain;
       background-position: left center;
-      z-index: 5;
+      z-index: 2;
       @media screen and (max-width: 768px) {
         display: none;
       }
@@ -670,7 +693,42 @@
         transform: translateX(100%);
       }
     }
+    @keyframes headingA {
+      0% {
+        letter-spacing: 1rem;
+        filter: blur(2px);
+      }
+      100% {
+        letter-spacing: normal;
+        filter: blur(0);
+      }
+    }
   }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  .indicators {
+    position: fixed;
+    bottom: 50px;
+    left: 10px;
+    display: flex;
+    gap: 10px;
+   }
+   
+   .indicator {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    position: absolute;
+    top: 0;
+   }
+   
 }
 
 //animations
@@ -762,15 +820,5 @@
   100% {
     right: 100%;
     background-color: transparent;
-  }
-}
-@keyframes headingA {
-  0% {
-    letter-spacing: 1rem;
-    filter: blur(2px);
-  }
-  100% {
-    letter-spacing: normal;
-    filter: blur(0);
   }
 }
