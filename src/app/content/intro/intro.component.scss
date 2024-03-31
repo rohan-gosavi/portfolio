@@ -531,13 +531,14 @@
       content: "";
       position: absolute;
       bottom: 0;
-      left: -3rem;
-      width: 36rem;
+      left: -2rem;
+      width: 15rem;
       height: 24rem;
       background: url(../../../assets/images/exp.svg) no-repeat;
       background-size: contain;
       background-position: left center;
       z-index: 2;
+      opacity: 0.8;
       @media screen and (max-width: 768px) {
         display: none;
       }
@@ -633,6 +634,9 @@
           animation-delay: 2s;
         }
       }
+      &.no-animation * {
+        animation: none;
+      }
     }
     // .out-of-view {
     //   .bannerText {
@@ -713,22 +717,16 @@
   &::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
-  .indicators {
+  .scroll-indicator {
     position: fixed;
-    bottom: 50px;
-    left: 10px;
-    display: flex;
-    gap: 10px;
-   }
-   
-   .indicator {
-    width: 10px;
-    height: 10px;
-    background-color: #ccc;
-    position: absolute;
-    top: 0;
-   }
-   
+    left: 0; /* Adjust positioning as needed */
+    bottom: 25px; /* Adjust positioning as needed */
+    width: 100%;
+    height: 2px; /* Fills the entire viewport height */
+    background-color: $secondry-color; /* Semi-transparent black */
+    transition: opacity 0.2s ease-in-out; /* Smooth transition effect */
+    z-index: 100;
+  }
 }
 
 //animations

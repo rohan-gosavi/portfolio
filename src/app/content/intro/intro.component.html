@@ -13,9 +13,9 @@
                 web development.</p>
         </div>
         <picture class="heroSvg">
-            <img src="assets/images/source-code-animate.svg" alt="tech svg image">
+            <img loading="lazy" src="assets/images/source-code-animate.svg" alt="tech svg image">
         </picture>
-        <img class="goi" src="assets/images/gateway-of-india.svg" alt="gateway of india">
+        <img  loading="lazy" class="goi" src="assets/images/gateway-of-india.svg" alt="gateway of india">
     </section>
     <section id="targetElement2" class="skills scrollable out-of-view"
         [ngClass]="{ 'in-view': element2InView, 'out-of-view': !element2InView }">
@@ -71,7 +71,7 @@
                 </span>
                 <span>
                     <!-- ngrx -->
-                    <img width="76" src="assets/images/ngrx-logo-white.svg" alt="ngrx logo">
+                    <img  loading="lazy" width="76" src="assets/images/ngrx-logo-white.svg" alt="ngrx logo">
                 </span>
                 <span>
                     <!-- rxjs -->
@@ -289,7 +289,7 @@
         <div class="exp mt-4" #targetDiv appHScrollOnHover>
             <article class="company1 cInfo" (mousemove)="onMouseMove($event)">
                 <div class="details-wrapper">
-                    <span class="cLogo1 cLogo"><img src="assets/images/kanni-logo.webp" alt="Kanini Logo"></span>
+                    <span class="cLogo1 cLogo"><img  loading="lazy" src="assets/images/kanni-logo.webp" alt="Kanini Logo"></span>
                     <span class="cName text-bold d-flex justify-content-between flex-wrap pb-1"><span
                             class="designation">Senior
                             Developer
@@ -321,7 +321,7 @@
             </article>
             <article class="company2 cInfo" (mousemove)="onMouseMove($event)">
                 <div class="details-wrapper">
-                    <span class="cLogo2 cLogo"><img src="assets/images/scorg-logo.png" alt="Kanini Logo"></span>
+                    <span class="cLogo2 cLogo"><img  loading="lazy" src="assets/images/scorg-logo.png" alt="Kanini Logo"></span>
 
                     <span class="cName text-bold d-flex justify-content-between flex-wrap pb-1"><span
                             class="designation">UI/UX
@@ -348,7 +348,7 @@
             </article>
             <article class="company3 cInfo" (mousemove)="onMouseMove($event)">
                 <div class="details-wrapper">
-                    <span class="cLogo3 cLogo"><img src="assets/images/pivotroots-logo.svg" alt="Kanini Logo"></span>
+                    <span class="cLogo3 cLogo"><img  loading="lazy" src="assets/images/pivotroots-logo.svg" alt="Kanini Logo"></span>
 
                     <span class="cName text-bold d-flex justify-content-between flex-wrap pb-1"><span
                             class="designation">Experiential
@@ -371,7 +371,7 @@
             </article>
             <article class="company4 cInfo" (mousemove)="onMouseMove($event)">
                 <div class="details-wrapper">
-                    <span class="cLogo4 cLogo"><img src="assets/images/emediscene-logo.png" alt="Kanini Logo"></span>
+                    <span class="cLogo4 cLogo"><img  loading="lazy" src="assets/images/emediscene-logo.png" alt="Kanini Logo"></span>
 
                     <span class="cName text-bold d-flex justify-content-between flex-wrap"><span
                             class="designation pb-2">Web
@@ -396,7 +396,7 @@
             </article>
             <article class="company5 cInfo" (mousemove)="onMouseMove($event)">
                 <div class="details-wrapper">
-                    <span class="cLogo5 cLogo"><img src="assets/images/accenture-logo.png" alt="Kanini Logo"></span>
+                    <span class="cLogo5 cLogo"><img  loading="lazy" src="assets/images/accenture-logo.png" alt="Kanini Logo"></span>
 
                     <span class="cName text-bold d-flex justify-content-between flex-wrap"><span
                             class="designation pb-2">Web
@@ -423,7 +423,7 @@
             </article>
             <article class="company6 cInfo" (mousemove)="onMouseMove($event)">
                 <div class="details-wrapper">
-                    <span class="cLogo6 cLogo"><img src="assets/images/tis-logo.svg" alt="Kanini Logo"></span>
+                    <span class="cLogo6 cLogo"><img  loading="lazy" src="assets/images/tis-logo.svg" alt="Kanini Logo"></span>
 
                     <span class="cName text-bold d-flex justify-content-between flex-wrap"><span
                             class="designation pb-2">Web
@@ -445,9 +445,9 @@
         </div>
     </section>
     <section id="targetElement4"
-        class="contact scrollable out-of-view d-flex justify-content-center align-items-center flex-wrap flex-md-nowrap"
+        class="contact scrollable out-of-view no-animation d-flex justify-content-center align-items-center flex-wrap flex-md-nowrap"
         [ngClass]="{ 'in-view': element4InView, 'out-of-view': !element4InView }">
-        <div class="myself d-flex justify-content-center align-items-center"><img class="w-100"
+        <div class="myself d-flex justify-content-center align-items-center"><img  loading="lazy" class="w-100"
                 src="assets/images/rgbg.png" alt="Rohan's Photo"></div>
         <div class="info d-flex justify-content-center align-content-center flex-column text-center text-md-left">
             <h2 class="heading">Would you like to do business me?</h2>
@@ -460,10 +460,5 @@
                     class="fa-arrow-alt-circle-right fa ml-2"></i></span>
         </div>
     </section>
-
-    <div class="indicators">
-        <div *ngFor="let indicator of indicators" class="indicator" [style.top.%]="indicator.position">
-            <!-- Indicator content -->
-        </div>
-    </div>
+    <div class="scroll-indicator"></div>
 </div>

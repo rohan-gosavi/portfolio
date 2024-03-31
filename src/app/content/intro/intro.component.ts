@@ -19,7 +19,6 @@ export class IntroComponent {
 
   @ViewChild('contentSection', { static: true })
   contentSection!: ElementRef;
-  indicators: any[] = []; // Array to hold indicator data
 
   isHorizontalScrollEnabled: boolean = false;
   element1InView: boolean = false;
@@ -31,39 +30,25 @@ export class IntroComponent {
   @HostListener('window:scroll', [])
   @HostListener('document:mousemove', ['$event'])
   ngOnInit(): void {}
-  ngAfterViewInit() {
-    this.contentSection.nativeElement.addEventListener(
-      'scroll',
-      this.updateIndicators.bind(this)
-    );
-  }
-
-  updateIndicators() {
-    const scrollTop = this.contentSection.nativeElement.scrollTop;
-    const scrollHeight = this.contentSection.nativeElement.scrollHeight;
-    const clientHeight = this.contentSection.nativeElement.clientHeight;
-
-    // Calculate the scroll percentage and update indicators accordingly
-    // const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
-    // Update your indicators based on scrollPercentage
-    const scrollPercentage =
-      (this.contentSection.nativeElement.scrollTop /
-        (this.contentSection.nativeElement.scrollHeight -
-          this.contentSection.nativeElement.clientHeight)) *
-      100;
-    this.indicators = [
-      { position: scrollPercentage },
-      { position: scrollPercentage },
-      { position: scrollPercentage },
-      { position: scrollPercentage },
-      // Add more indicators as needed
-    ];
-  }
   onScroll(): void {
     this.element1InView = this.checkElementInView('#targetElement1');
     this.element2InView = this.checkElementInView('#targetElement2');
     this.element3InView = this.checkElementInView('#targetElement3');
     this.element4InView = this.checkElementInView('#targetElement4');
+    
+    //dynamic scroller indicator
+    const scrollPercentage =
+      (this.contentSection.nativeElement.scrollTop /
+        (this.contentSection.nativeElement.scrollHeight -
+          this.contentSection.nativeElement.clientHeight)) *
+      100;
+    const indicatorHeight =
+      (scrollPercentage * this.contentSection.nativeElement.clientHeight) / 100;
+    const indicatorElement =
+      this.elementRef.nativeElement.querySelector('.scroll-indicator');
+    if (indicatorElement) {
+      indicatorElement.style.width = `${scrollPercentage}%`;
+    }
   }
   checkElementInView(selector: string): boolean {
     const element = this.elementRef.nativeElement.querySelector(selector);

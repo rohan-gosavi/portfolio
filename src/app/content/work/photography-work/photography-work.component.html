@@ -4,9 +4,9 @@
         <h2 class="m-0 mb-4 ml-4">Check out my photos</h2>
     </section>
     <section class="grid-container">
-        <!-- <span class="loader"></span> -->
-        <span *ngFor="let post of posts" class="image-container" title=".:: {{extractCaption(post.caption)}} ::.">
-            <img *ngIf="post.media_url.includes('.webp')" [src]="post.media_url" alt="{{extractCaption(post.caption)}}"
+        <span *ngFor="let post of posts" class="image-container d-flex justify-content-center" title=".:: {{extractCaption(post.caption)}} ::.">
+            <span class="loader"></span>
+            <img loading="lazy" *ngIf="post.media_url.includes('.webp')" [src]="post.media_url" alt="{{extractCaption(post.caption)}}"
                 class="img-item">
             <!-- <video *ngIf="post.media_url.includes('.mp4')" class="video-item" controls playOnHover>
             <source src="{{post.media_url}}" type="video/mp4">
