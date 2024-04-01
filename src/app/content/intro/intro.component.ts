@@ -48,6 +48,7 @@ export class IntroComponent {
       this.elementRef.nativeElement.querySelector('.scroll-indicator');
     if (indicatorElement) {
       indicatorElement.style.width = `${scrollPercentage}%`;
+      indicatorElement.style.opacity = `1`;
     }
   }
   checkElementInView(selector: string): boolean {

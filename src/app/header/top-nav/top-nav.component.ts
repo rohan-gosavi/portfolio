@@ -13,8 +13,8 @@ export class TopNavComponent {
     {
       name: 'Work',
       subLinks: [
-        { name: 'Photography', link: 'work/photography-work/' },
         { name: 'Software', link: 'work/software-work/' },
+        { name: 'Photography', link: 'work/photography-work/' },
       ],
       link: '#',
     },
@@ -38,7 +38,7 @@ export class TopNavComponent {
 
   @HostListener('window:resize', ['$event'])
   ngOnInit() {
-    this.isMenuOpen = window.innerWidth >= 768;
+    this.isMenuOpen = window.innerWidth > 768;
     this.innerWidth = window.innerWidth;
 
     // Scroll to the contact section when the fragment changes

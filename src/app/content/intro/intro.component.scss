@@ -1,33 +1,31 @@
-@import "../../../styles.scss";
+@import "/src/styles/_layout.scss";
 
 .content-section {
-  // background-image: var(--techSvg);
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   height: calc(100vh - 86px);
   margin-bottom: 0;
   scrollbar-width: none;
   scroll-behavior: smooth;
-  @media screen and (max-width: 768px) {
-    height: 100%;
+  @include respond(small) {
     scroll-snap-type: none;
   }
   .scrollable {
     height: calc(100vh - 86px);
     scroll-snap-align: start;
     position: relative;
-    @media screen and (max-width: 768px) {
-      height: 100%;
+    @include respond(small) {
+      height: auto;
       margin-bottom: 40px;
+      scroll-snap-align: none;
     }
     .heading {
-      font-size: calc(12px + 3vw);
+      font-size: clamp(1rem, 16px + 2vw, 4rem);
+      overflow: hidden;
     }
     .intro,
     .line2 {
-      @media screen and (max-width: 768px) {
-        font-size: calc(14px);
-      }
+      font-size: clamp(1rem, 1rem, 2rem);
     }
     &:nth-child(odd)::after {
       content: "";
@@ -41,7 +39,7 @@
       transform: rotate(180deg);
       filter: blur(8px);
       opacity: 0.5;
-      @media screen and (max-width: 768px) {
+      @include respond(small) {
         background-size: 50%;
         opacity: 0.2;
       }
@@ -58,7 +56,7 @@
       filter: blur(8px);
       opacity: 0.5;
       animation: shake 10s ease-in-out infinite;
-      @media screen and (max-width: 768px) {
+      @include respond(small) {
         background-size: 50%;
         opacity: 0.2;
       }
@@ -70,18 +68,20 @@
     grid-template-columns: 2fr 1fr;
     gap: 100px;
     position: relative;
-    @media screen and (max-width: 768px) {
+    @include respond(small) {
       gap: 20px;
+      grid-template-columns: 1fr;
+      .heroSvg {
+        order: -1;
+        img {
+          display: block;
+          width: 70%;
+          margin: 0 auto;
+        }
+      }
     }
     .bannerText {
       position: relative;
-      .line1 {
-        overflow: hidden;
-        font-size: calc(12px + 3vw);
-      }
-      .line2 {
-        font-size: calc(12px + 1vw);
-      }
       &::before {
         content: "";
         display: block;
@@ -107,20 +107,20 @@
             center/var(--dot-space) var(--dot-space),
           var(--dot-color);
         opacity: 0.3;
-        @media screen and (max-width: 768px) {
+        @include respond(small) {
           display: none;
         }
       }
       * {
         opacity: 0;
-        @media screen and (max-width: 768px) {
+        @include respond(small) {
           opacity: 1;
         }
       }
     }
     .heroSvg {
       opacity: 0;
-      @media screen and (max-width: 768px) {
+      @include respond(small) {
         opacity: 1;
       }
     }
@@ -130,19 +130,8 @@
       left: -40px;
       width: 300px;
       animation: wobble 5s ease-in-out infinite;
-      @media screen and (max-width: 768px) {
+      @include respond(small) {
         opacity: 0;
-      }
-    }
-    @media screen and (max-width: 768px) {
-      grid-template-columns: 1fr;
-      .heroSvg {
-        order: -1;
-        img {
-          display: block;
-          width: 70%;
-          margin: 0 auto;
-        }
       }
     }
     // &:before{
@@ -165,21 +154,21 @@
     align-items: center;
     position: relative;
     z-index: 1;
-    @media screen and (max-width: 768px) {
+    @include respond(small) {
       opacity: 1;
       justify-items: left;
     }
     .intro {
       max-width: 1000px;
       opacity: 0;
-      @media screen and (max-width: 768px) {
+      @include respond(small) {
         opacity: 1;
       }
     }
     .skillset {
       margin-top: 40px;
       opacity: 0;
-      @media screen and (max-width: 768px) {
+      @include respond(small) {
         opacity: 1;
       }
       picture {
@@ -189,7 +178,7 @@
         align-items: center;
         gap: 60px;
         max-width: 1000px;
-        @media screen and (max-width: 768px) {
+        @include respond(small) {
           gap: 30px;
         }
         span {
@@ -198,7 +187,7 @@
           justify-content: center;
           flex-direction: column;
           opacity: 0;
-          @media screen and (max-width: 768px) {
+          @include respond(small) {
             opacity: 1;
           }
           &:nth-child(1)::after {
@@ -272,7 +261,7 @@
             font-weight: 600;
           }
           &:after {
-            @media screen and (max-width: 768px) {
+            @include respond(small) {
               font-size: 12px;
             }
           }
@@ -281,7 +270,7 @@
         img {
           width: 76px;
           margin-bottom: 8px;
-          @media screen and (max-width: 768px) {
+          @include respond(small) {
             width: 50px;
           }
         }
@@ -346,7 +335,7 @@
     position: relative;
     padding-left: 20%;
     position: relative;
-    @media screen and (max-width: 768px) {
+    @include respond(small) {
       padding-left: 0;
     }
     .exp {
@@ -358,7 +347,7 @@
       overflow-x: auto;
       width: 80dvw;
       padding: 0 4rem 50px 0;
-      @media screen and (max-width: 768px) {
+      @include respond(small) {
         padding: 0 20px 50px 0;
         gap: 1rem;
         width: 100dvw;
@@ -372,7 +361,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        @media screen and (max-width: 768px) {
+        @include respond(small) {
           min-width: 80svw;
         }
         .details-wrapper {
@@ -386,7 +375,7 @@
           // opacity: 0.9;
           border-radius: inherit;
 
-          @media screen and (max-width: 768px) {
+          @include respond(small) {
             padding: 1rem;
           }
           .cName {
@@ -394,7 +383,7 @@
             font-weight: 700;
             column-gap: 10px;
             position: relative;
-            @media screen and (max-width: 768px) {
+            @include respond(small) {
               font-size: 14px;
             }
             &:after {
@@ -414,7 +403,7 @@
             }
           }
           .roleDetails {
-            @media screen and (max-width: 768px) {
+            @include respond(small) {
               font-size: 12px;
             }
             ul {
@@ -461,7 +450,7 @@
               padding: 10px;
               border-radius: 5px;
               max-width: 100px;
-              @media screen and (max-width: 768px) {
+              @include respond(small) {
                 max-width: 70px;
               }
             }
@@ -539,7 +528,7 @@
       background-position: left center;
       z-index: 2;
       opacity: 0.8;
-      @media screen and (max-width: 768px) {
+      @include respond(small) {
         display: none;
       }
     }
@@ -550,7 +539,7 @@
     .myself {
       position: relative;
       width: 45%;
-      @media screen and (max-width: 768px) {
+      @include respond(small) {
         width: 100%;
       }
     }
@@ -726,6 +715,7 @@
     background-color: $secondry-color; /* Semi-transparent black */
     transition: opacity 0.2s ease-in-out; /* Smooth transition effect */
     z-index: 100;
+    opacity: 0;
   }
 }
 

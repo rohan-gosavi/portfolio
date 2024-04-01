@@ -1,9 +1,6 @@
-@import "../../../styles.scss";
+@import "/src/styles/_layout.scss";
 
 header {
-  // background-color: $header-bg-color;
-  // border-bottom: 2px solid $primary-color;
-
   .navbar {
     padding: 0.5rem 1rem;
     min-height: 60px;
@@ -32,22 +29,21 @@ header {
         width: auto;
       }
       .logo {
-        opacity: 1;
+        opacity: 0.8;
         transition: opacity 0.3s ease;
       }
       .fname,
       .lname {
         color: #fff;
-        transition: font-weight 0.3s ease, color 0.3s ease;
+        transition: all 0.3s ease;
       }
       &:hover {
         .logo {
-          opacity: 0.4;
+          opacity: 1;
         }
         .fname,
         .lname {
-          color: #111;
-          font-weight: bold;
+          letter-spacing: 3px;
         }
       }
     }
@@ -58,10 +54,8 @@ header {
         outline: none;
         border: none;
       }
-      @media screen and (max-width: 768px) {
+      @include respond(small) {
         .burger {
-          // height: 50px;
-          // width: 50px;
           position: relative;
           margin: auto;
           border: 2px solid transparent;
@@ -113,7 +107,7 @@ header {
       background-color: $primary-color;
     }
     .navbarNav {
-      @media screen and (max-width: 768px) {
+      @include respond(small) {
         display: flex;
         flex-direction: column;
         align-content: flex-end;
@@ -136,7 +130,7 @@ header {
         list-style: none;
         margin: 0;
         padding: 0;
-        @media screen and (max-width: 768px) {
+        @include respond(small) {
           order: 1;
         }
         li {
@@ -183,7 +177,7 @@ header {
         list-style: none;
         margin: 0;
         padding: 0;
-        @media screen and (max-width: 768px) {
+        @include respond(small) {
           margin-top: 50px;
           width: 100%;
         }
@@ -197,7 +191,7 @@ header {
             padding: 1rem;
             text-decoration: none;
             transition: all 0.2s ease;
-            @media screen and (max-width: 768px) {
+            @include respond(small) {
               padding-inline: 0rem;
               padding-block: 0.5rem;
               text-align: right;
@@ -213,7 +207,7 @@ header {
             border-top: 2px solid $primary-color;
             padding: 0;
             transition: all 0.3s ease;
-            @media screen and (max-width: 768px) {
+            @include respond(small) {
               z-index: 1;
             }
             li {
@@ -243,8 +237,7 @@ header {
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                background: url(../../../assets/images/photography.svg)
-                  no-repeat;
+                background: url(../../../assets/images/software.svg) no-repeat;
                 background-size: contain;
               }
               &:nth-child(2) > a:before {
@@ -255,7 +248,8 @@ header {
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                background: url(../../../assets/images/software.svg) no-repeat;
+                background: url(../../../assets/images/photography.svg)
+                  no-repeat;
                 background-size: contain;
               }
             }
@@ -274,7 +268,7 @@ header {
               position: absolute;
               top: 40px;
               left: 46%;
-              @media screen and (max-width: 768px) {
+              @include respond(small) {
                 display: none;
               }
             }
@@ -327,19 +321,19 @@ header {
           &:hover {
             background-color: #555;
             border-radius: 5%;
-            @media screen and (max-width: 768px) {
+            @include respond(small) {
               border-radius: 0;
             }
             a {
               padding: 1.9rem 1rem 0.1rem 1rem;
-              @media screen and (max-width: 768px) {
+              @include respond(small) {
                 padding: 1rem;
               }
             }
             .sublinks {
               display: block;
               width: 160px;
-              @media screen and (max-width: 768px) {
+              @include respond(small) {
                 width: 100%;
               }
             }
@@ -349,7 +343,7 @@ header {
               content: "";
               transform: translate(-50%, -80%);
               opacity: 1;
-              @media screen and (max-width: 768px) {
+              @include respond(small) {
                 transform: translate(-140%, -30%);
                 scale: 1.5;
               }
