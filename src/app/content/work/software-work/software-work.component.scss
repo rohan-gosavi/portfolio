@@ -1,0 +1,47 @@
+@import "/src/styles/_layout.scss";
+
+.content-section {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1080' height='1080' preserveAspectRatio='none' viewBox='0 0 1080 1080'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1033%26quot%3b)' fill='none'%3e%3crect width='1080' height='1080' x='0' y='0' fill='rgba(0%2c 52%2c 89%2c 1)'%3e%3c/rect%3e%3cpath d='M302.76 992.48a71.85 71.85 0 1 0-113.38 88.29z' stroke='%23037b0b'%3e%3c/path%3e%3cpath d='M958.54 137.75L1014.07 137.75L1014.07 193.28L958.54 193.28z' stroke='%23e73635'%3e%3c/path%3e%3cpath d='M365.63 395.81L399.56 395.81L399.56 408.77L365.63 408.77z' fill='%23e73635'%3e%3c/path%3e%3cpath d='M854.14 1015.14L868.16 1015.14L868.16 1029.16L854.14 1029.16z' fill='%23d3b714'%3e%3c/path%3e%3cpath d='M246.39 296.74a87.07 87.07 0 1 0 92.16-147.76z' stroke='%23d3b714'%3e%3c/path%3e%3cpath d='M618.76 1.01L648.96 1.01L648.96 36.14L618.76 36.14z' stroke='%23d3b714'%3e%3c/path%3e%3cpath d='M1070.28 237.61L1083.9 237.61L1083.9 251.23L1070.28 251.23z' fill='%23037b0b'%3e%3c/path%3e%3cpath d='M557 868.87L605.62 868.87L605.62 917.49L557 917.49z' fill='%23037b0b'%3e%3c/path%3e%3cpath d='M750.01 372.33a14.74 14.74 0 1 0-29.48-0.42z' stroke='%23037b0b'%3e%3c/path%3e%3cpath d='M782.16 278.2a63.05 63.05 0 1 0 106.34 67.77z' fill='%23037b0b'%3e%3c/path%3e%3cpath d='M326.61 748.36a74.51 74.51 0 1 0 125.64 80.12z' fill='%23e73635'%3e%3c/path%3e%3cpath d='M60.2 10.34L128.97 10.34L128.97 17.69L60.2 17.69z' stroke='%23e73635'%3e%3c/path%3e%3cpath d='M158.44 260.11L226.54 260.11L226.54 328.21L158.44 328.21z' stroke='%23037b0b'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1033'%3e%3crect width='1080' height='1080' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-size: cover;
+  .heading {
+    width: 80svw;
+    margin: 0 auto;
+    @include respond(small) {
+      font-size: 1rem;
+      width: 100%;
+    }
+  }
+  .projects {
+    gap: 2rem;
+    @include respond(small) {
+      gap: 1rem;
+    }
+    .project {
+      width: 100%;
+      max-width: 80svw;
+      min-height: 200px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 20px;
+      background-color: rgb(255 255 255 / 12%);
+      box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+      -webkit-backdrop-filter: blur(15px);
+      backdrop-filter: blur(15px);
+      align-content: flex-start;
+      align-items: flex-start;
+      @include respond(small) {
+        max-width: 100svw;
+        border-radius: 10px;
+        padding: 1rem;
+      }
+      ul {
+        padding-left: 18px;
+      }
+    }
+  }
+}

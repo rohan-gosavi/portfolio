@@ -11,7 +11,7 @@ interface MediaItem {
 })
 export class InstagramServiceService {
   accessToken =
-    'IGQWROX1hMRHZAKNXFsNk5Sb1p2QXV5SDRBOGIzQVdTakIyUWE0bW9aZAnp5Skd6QUZABaUhwak1lSV9PNWg5MmxnMERHYWllaHE1VmFqZAE81VmEzTWl0ZAFlWMVAtejMzQlpuaDdIZA0VfQk40WkVvUGhmYnVXNkpCaDgZD';
+    'IGQWRQNzBZAU2w2QjNybGFxWlh0TW05VnFpMVBRaWs1aXpoLXVMeGZA3eHlQMUI1LWNVTlVUeVJpWEdpc0hmTXJ5TnB1ZAk9VRU00TFc2bHhUak82bnRKdjhGVXBGTTRqaTFSQnZApNzczWWR0WjI2blNrUWFsRFF3LWcZD';
 
   // Array to hold the Instagram image URLs
   images: string[] = [];

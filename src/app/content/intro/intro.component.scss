@@ -536,6 +536,7 @@
 
   .contact {
     gap: 40px;
+    z-index: 1;
     .myself {
       position: relative;
       width: 45%;
@@ -544,6 +545,7 @@
       }
     }
     .info {
+      z-index: 1;
       .heading {
         font-size: calc(12px + 2svw);
       }
@@ -551,9 +553,12 @@
         font-size: calc(12px + 1svw);
       }
       .email,
-      .phone {
+      .phone,
+      .about,
+      .linkedin {
         text-decoration: none;
-        span {
+        span, a {
+          text-decoration: none;
           background: linear-gradient(to right, transparent, transparent),
             linear-gradient(
               to right,
@@ -568,6 +573,7 @@
           &:hover,
           &:focus {
             background-size: 0 0.1em, 100% 0.1em;
+            // color: $primary;
           }
         }
       }
@@ -712,7 +718,7 @@
     bottom: 25px; /* Adjust positioning as needed */
     width: 100%;
     height: 2px; /* Fills the entire viewport height */
-    background-color: $secondry-color; /* Semi-transparent black */
+    background-color: $secondry; /* Semi-transparent black */
     transition: opacity 0.2s ease-in-out; /* Smooth transition effect */
     z-index: 100;
     opacity: 0;

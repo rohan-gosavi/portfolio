@@ -13,6 +13,7 @@ import {
   styleUrls: ['./intro.component.scss'],
 })
 export class IntroComponent {
+[x: string]: any;
   // @ViewChild('targetDiv') targetDiv!: ElementRef;
   @ViewChild('targetDiv', { read: ElementRef })
   public targetDiv!: ElementRef<any>;
@@ -25,7 +26,7 @@ export class IntroComponent {
   element2InView: boolean = false;
   element3InView: boolean = false;
   element4InView: boolean = false;
-
+  BASE_ROUTE = document.baseURI;
   constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
   @HostListener('window:scroll', [])
   @HostListener('document:mousemove', ['$event'])

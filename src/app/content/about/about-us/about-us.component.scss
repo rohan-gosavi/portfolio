@@ -1,0 +1,68 @@
+@import "/src/styles/_layout.scss";
+
+.content-section {
+  margin: 60px auto auto auto;
+  height: 100%;
+  background: url("../../../../assets/images/sprinkle-bg.svg");
+  .about-me {
+    max-width: 1600px;
+    .heading {
+      padding: 10rem 0;
+      @include respond(small) {
+        padding: 2rem 0;
+      }
+      h2 {
+        font-size: 4rem;
+      }
+      h3 {
+        font-size: 1rem;
+      }
+      p {
+        font-size: 1.5rem;
+      }
+      .arrow {
+        position: relative;
+        animation: float 1.5s cubic-bezier(0.86, 0, 0.07, 1) infinite alternate;
+      }
+    }
+    .interest {
+      gap: 1rem;
+      transition: all 0.5s ease-in-out;
+      img {
+        width: 300px;
+        @include respond(small) {
+          width: 150px;
+        }
+      }
+      p {
+        font-size: 1.5rem;
+        @include respond(small) {
+          font-size: 1rem;
+        }
+      }
+      &:nth-of-type(odd) {
+        border-radius: 10px;
+        background-color: $secondry;
+      }
+      // @media screen and (min-width: 768px) {
+        opacity: 0;
+        &.in-view {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      // }
+    }
+  }
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}

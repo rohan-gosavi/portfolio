@@ -7,8 +7,9 @@
 html,
 head,
 body {
-  background-color: $primary-bgColor;
+  background-color: $primary-bg;
   font-size: 16px;
+  scroll-behavior: smooth;
   @include respond(small){
       font-size: 14px;
   }
@@ -19,6 +20,6 @@ span,
 p,
 a,
 button {
-  color: $primary-text-color;
+  color: $primary-text;
   margin: 0;
 }
