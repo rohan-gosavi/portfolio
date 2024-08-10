@@ -29,3 +29,5 @@ Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+src/assets/images/exp-old.svg
+src/assets/images/source-code-animate-old.svg
