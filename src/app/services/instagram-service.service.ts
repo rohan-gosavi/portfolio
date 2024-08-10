@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 interface MediaItem {
   media_url: any;
@@ -10,8 +11,7 @@ interface MediaItem {
   providedIn: 'root',
 })
 export class InstagramServiceService {
-  accessToken =
-    'IGQWROT1AwYU5PY2Vyb20xRFpzRmdjNEFMUWIwRlc4ZADUxVU1nYXZAoR0I2QzFrX3NNZATBnMG5BTEVOb1VIcFpLQWROYUw2aDJaNm9mNFNZAbFYwTHczLUxfNFdhMVJnSXpYVW54U0ZAhV01adC1BRnNkdkdvM3NFR2sZD';
+  accessToken = environment.instagramAccessToken;
 
   // Array to hold the Instagram image URLs
   images: string[] = [];
