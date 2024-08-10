@@ -5,6 +5,22 @@
   background-repeat: repeat;
   overflow: initial;
   height: auto;
+
+  .submitBtn {
+    background-color: $primary-btn;
+  }
+
+  input.form-control.ng-invalid.ng-touched {
+    border-color: #dc3545;
+  }
+
+  .text-danger {
+    font-size: 0.875em;
+  }
+
+  .no-data {
+    max-width: 500px;
+  }
 }
 .banner {
   background-image: url(../../../../assets/images/hero.jpg);
@@ -50,7 +66,7 @@
   border-radius: 4px;
   width: 300px;
   height: clamp(150px, 100%, 100%);
-  @include respond(small){
+  @include respond(small) {
     width: 100%;
   }
   .img-item {

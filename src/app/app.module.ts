@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlayOnHoverDirective } from './directives/play-on-hover.directive';
 import { HScrollOnHoverDirective } from './directives/HScrollOnHover.directive';
 import { IntoViewDirective } from './directives/intoView.directive';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { IntoViewDirective } from './directives/intoView.directive';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

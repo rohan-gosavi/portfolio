@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, HostListener } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InstagramServiceService } from 'src/app/services/instagram-service.service';
 
 @Component({
@@ -8,8 +9,7 @@ import { InstagramServiceService } from 'src/app/services/instagram-service.serv
   styleUrls: ['./photography-work.component.scss'],
 })
 export class PhotographyWorkComponent {
-  accessToken =
-    'IGQWROX1hMRHZAKNXFsNk5Sb1p2QXV5SDRBOGIzQVdTakIyUWE0bW9aZAnp5Skd6QUZABaUhwak1lSV9PNWg5MmxnMERHYWllaHE1VmFqZAE81VmEzTWl0ZAFlWMVAtejMzQlpuaDdIZA0VfQk40WkVvUGhmYnVXNkpCaDgZD';
+  accessToken: string = '';
   posts: any = [];
   reels: any;
   private observer!: IntersectionObserver;
@@ -20,15 +20,28 @@ export class PhotographyWorkComponent {
   page: number = 1;
   pageSize: number = 10;
   instagramImages: any[] = [];
+  accessTokenForm!: FormGroup;
 
   constructor(
     private http: HttpClient,
     private igService: InstagramServiceService,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private fb: FormBuilder
   ) {}
 
-  ngOnInit(): void {    
-    this.fetchInstagramImages();
+  ngOnInit(): void {
+    this.accessTokenForm = this.fb.group({
+      accessToken: ['', [Validators.required, Validators.minLength(10)]],
+    });
+  }
+
+  onSubmit() {
+    if (this.accessTokenForm.valid) {
+      this.accessToken = this.accessTokenForm.get('accessToken')?.value;
+      this.fetchInstagramImages(this.accessToken);
+    } else {
+      console.log('Form is invalid');
+    }
   }
 
   @HostListener('window:scroll', [])
@@ -37,14 +50,14 @@ export class PhotographyWorkComponent {
       !this.isLoading &&
       window.innerHeight + window.scrollY >= document.body.offsetHeight
     ) {
-      this.fetchInstagramImages();
+      this.fetchInstagramImages(this.accessToken);
     }
   }
 
-  private fetchInstagramImages(): void {
+  private fetchInstagramImages(access_token: string): void {
     if (!this.isLoading) {
       this.isLoading = true;
-      this.igService.getInstagramImages(this.page, this.pageSize).subscribe(
+      this.igService.getInstagramImages(this.page, this.pageSize, access_token).subscribe(
         (response: any) => {
           this.posts.push(
             ...response.data.filter((d: { media_url: string | string[] }) => {
