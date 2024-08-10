@@ -73,6 +73,7 @@
 .angular/cache/15.2.6/angular-webpack/9b3e6ef38173d44f28fc0c871607ebced2599173/index.pack.old
 node_modules/
 .angular/
+.angular/cache/
 node_modules/__ngcc_entry_points__.json
 .angular/cache/15.2.6/angular-webpack/9b3e6ef38173d44f28fc0c871607ebced2599173/0.pack
 .angular/cache/15.2.6/angular-webpack/9b3e6ef38173d44f28fc0c871607ebced2599173/1.pack

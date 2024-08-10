@@ -39,6 +39,7 @@ export class PhotographyWorkComponent {
     if (this.accessTokenForm.valid) {
       this.accessToken = this.accessTokenForm.get('accessToken')?.value;
       this.fetchInstagramImages(this.accessToken);
+      this.isLoading = false;
     } else {
       console.log('Form is invalid');
     }
@@ -48,7 +49,8 @@ export class PhotographyWorkComponent {
   onScroll(): void {
     if (
       !this.isLoading &&
-      window.innerHeight + window.scrollY >= document.body.offsetHeight
+      window.innerHeight + window.scrollY >= document.body.offsetHeight &&
+      this.accessToken
     ) {
       this.fetchInstagramImages(this.accessToken);
     }
@@ -57,21 +59,23 @@ export class PhotographyWorkComponent {
   private fetchInstagramImages(access_token: string): void {
     if (!this.isLoading) {
       this.isLoading = true;
-      this.igService.getInstagramImages(this.page, this.pageSize, access_token).subscribe(
-        (response: any) => {
-          this.posts.push(
-            ...response.data.filter((d: { media_url: string | string[] }) => {
-              return d.media_url.includes('.webp');
-            })
-          );
-          this.page++;
-          this.isLoading = false;
-        },
-        (error) => {
-          console.error('Error fetching Instagram images:', error);
-          this.isLoading = false;
-        }
-      );
+      this.igService
+        .getInstagramImages(this.page, this.pageSize, access_token)
+        .subscribe(
+          (response: any) => {
+            this.posts.push(
+              ...response.data.filter((d: { media_url: string | string[] }) => {
+                return d.media_url.includes('.webp');
+              })
+            );
+            this.page++;
+            this.isLoading = false;
+          },
+          (error) => {
+            console.error('Error fetching Instagram images:', error);
+            this.isLoading = false;
+          }
+        );
     }
   }
 
