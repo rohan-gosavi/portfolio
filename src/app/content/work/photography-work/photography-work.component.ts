@@ -1,113 +1,87 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, HostListener } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InstagramServiceService } from 'src/app/services/instagram-service.service';
 
 @Component({
   selector: 'app-photography-work',
   templateUrl: './photography-work.component.html',
-  styleUrls: ['./photography-work.component.scss']
+  styleUrls: ['./photography-work.component.scss'],
 })
 export class PhotographyWorkComponent {
-  accessToken =
-  'IGQWROX1hMRHZAKNXFsNk5Sb1p2QXV5SDRBOGIzQVdTakIyUWE0bW9aZAnp5Skd6QUZABaUhwak1lSV9PNWg5MmxnMERHYWllaHE1VmFqZAE81VmEzTWl0ZAFlWMVAtejMzQlpuaDdIZA0VfQk40WkVvUGhmYnVXNkpCaDgZD';
-posts: any = [];
-reels: any;
-private observer!: IntersectionObserver;
+  accessToken: string = '';
+  posts: any = [];
+  reels: any;
+  private observer!: IntersectionObserver;
 
-isLoading = false;
-currentPage = 1;
-itemsPerPage = 10;
-page: number = 1;
-pageSize: number = 10;
-instagramImages: any[] = [];
+  isLoading = false;
+  currentPage = 1;
+  itemsPerPage = 10;
+  page: number = 1;
+  pageSize: number = 10;
+  instagramImages: any[] = [];
+  accessTokenForm!: FormGroup;
 
-constructor(
-  private http: HttpClient,
-  private igService: InstagramServiceService,
-  private elementRef: ElementRef
-) {}
+  constructor(
+    private http: HttpClient,
+    private igService: InstagramServiceService,
+    private elementRef: ElementRef,
+    private fb: FormBuilder
+  ) {}
 
-ngOnInit(): void {
-  const options: IntersectionObserverInit = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1, // Adjust this threshold to your preference for triggering the intersection event
-  };
-  this.fetchInstagramImages();
-
-  // this.observer = new IntersectionObserver(this.handleIntersection, options);
-  // this.observer.observe(this.elementRef.nativeElement);
-  // this.igService.getInstagramImages().subscribe(
-  //   (res: string[]) => {
-  //     this.posts = res;
-  //   },
-  //   (error) => {
-  //     console.log(error);
-  //   }
-  // );
-}
-
-// private handleIntersection = (
-//   entries: IntersectionObserverEntry[],
-//   observer: IntersectionObserver
-// ) => {
-//   entries.forEach((entry) => {
-//     if (entry.isIntersecting) {
-//       this.loadContent();
-//       observer.unobserve(entry.target);
-//     }
-//   });
-// };
-
-// private loadContent() {
-//   this.isLoading = true;
-
-//   this.igService
-//     .getInstagramImages(this.currentPage, this.itemsPerPage)
-//     .subscribe(
-//       (res: any[]) => {
-//         this.posts?.push(...res);
-//         this.currentPage++;
-//         this.isLoading = false;
-//       },
-//       (error) => {
-//         console.log(error);
-//         this.isLoading = false;
-//       }
-//     );
-// }
-@HostListener('window:scroll', [])
-onScroll(): void {
-  if (
-    !this.isLoading &&
-    window.innerHeight + window.scrollY >= document.body.offsetHeight
-  ) {
-    this.fetchInstagramImages();
+  ngOnInit(): void {
+    this.accessTokenForm = this.fb.group({
+      accessToken: ['', [Validators.required, Validators.minLength(10)]],
+    });
   }
-}
 
-private fetchInstagramImages(): void {
-  if (!this.isLoading) {
-    this.isLoading = true;
-    this.igService.getInstagramImages(this.page, this.pageSize).subscribe(
-      (response: any) => {
-        this.posts.push(...response.data.filter((d: { media_url: string | string[]; }) => {
-          return d.media_url.includes('.webp')
-        }));
-        this.page++;
-        this.isLoading = false;
-      },
-      (error) => {
-        console.error('Error fetching Instagram images:', error);
-        this.isLoading = false;
-      }
-    );
+  onSubmit() {
+    if (this.accessTokenForm.valid) {
+      this.accessToken = this.accessTokenForm.get('accessToken')?.value;
+      this.fetchInstagramImages(this.accessToken);
+      this.isLoading = false;
+    } else {
+      console.log('Form is invalid');
+    }
   }
-}
 
-extractCaption(text: string): string {
-  const regex = /::(.*?)::/;
-  const match = text.match(regex);
-  return match ? match[1].trim() : '';
-}
+  @HostListener('window:scroll', [])
+  onScroll(): void {
+    if (
+      !this.isLoading &&
+      window.innerHeight + window.scrollY >= document.body.offsetHeight &&
+      this.accessToken
+    ) {
+      this.fetchInstagramImages(this.accessToken);
+    }
+  }
+
+  private fetchInstagramImages(access_token: string): void {
+    if (!this.isLoading) {
+      this.isLoading = true;
+      this.igService
+        .getInstagramImages(this.page, this.pageSize, access_token)
+        .subscribe(
+          (response: any) => {
+            this.posts.push(
+              ...response.data.filter((d: { media_url: string | string[] }) => {
+                return d.media_url.includes('.webp');
+              })
+            );
+            this.page++;
+            this.isLoading = false;
+          },
+          (error) => {
+            console.error('Error fetching Instagram images:', error);
+            this.isLoading = false;
+          }
+        );
+    }
+  }
+
+  extractCaption(text: string): string {
+    const regex = /::(.*?)::/;
+    const match = text.match(regex);
+    return match ? match[1].trim() : '';
+  }
 }

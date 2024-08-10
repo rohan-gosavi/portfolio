@@ -9,29 +9,60 @@ import { SoftwareWorkComponent } from './content/work/software-work/software-wor
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', component: IntroComponent},
-  { path: '#', component: IntroComponent},
-  { path: 'home', component: IntroComponent},
-
-  { path: 'work', 
-    children: [
-      { path: 'photography-work', component: PhotographyWorkComponent},
-      { path: 'software-work', component: SoftwareWorkComponent }
-    ]
+  {
+    path: '',
+    component: IntroComponent,
+    data: {
+      description:
+        'Introduction page which shows information about Rohan Gosavi',
+    },
+  },
+  {
+    path: '#',
+    component: IntroComponent,
+    data: {
+      description:
+        'Introduction page which shows information about Rohan Gosavi',
+    },
+  },
+  {
+    path: 'home',
+    component: IntroComponent,
+    data: {
+      description:
+        'Introduction page which shows information about Rohan Gosavi',
+    },
   },
 
-  { path: 'services', 
+  {
+    path: 'work',
     children: [
-      { path: 'photography-services', component: PhotographyServicesComponent},
-      { path: 'software-services', component: SoftwareServicesComponent},
-    ]
+      {
+        path: 'photography-work',
+        component: PhotographyWorkComponent,
+        data: { description: 'Photography showcasing as its my hobby' },
+      },
+      {
+        path: 'software-work',
+        component: SoftwareWorkComponent,
+        data: { description: 'My work in software field' },
+      },
+    ],
   },
 
-  { path: 'about', component: AboutUsComponent},
+  {
+    path: 'services',
+    children: [
+      { path: 'photography-services', component: PhotographyServicesComponent },
+      { path: 'software-services', component: SoftwareServicesComponent },
+    ],
+  },
+
+  { path: 'about', component: AboutUsComponent, data: { description: 'More Information about me' }  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

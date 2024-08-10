@@ -14,6 +14,9 @@ import { HomeComponent } from './home/home.component';
 import { IntroComponent } from './content/intro/intro.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PlayOnHoverDirective } from './directives/play-on-hover.directive';
+import { HScrollOnHoverDirective } from './directives/HScrollOnHover.directive';
+import { IntoViewDirective } from './directives/intoView.directive';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,12 +30,15 @@ import { PlayOnHoverDirective } from './directives/play-on-hover.directive';
     SoftwareWorkComponent,
     HomeComponent,
     IntroComponent,
-    PlayOnHoverDirective
+    PlayOnHoverDirective,
+    HScrollOnHoverDirective,
+    IntoViewDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

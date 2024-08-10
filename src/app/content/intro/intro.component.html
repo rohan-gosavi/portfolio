@@ -1,16 +1,473 @@
-<section class="content-section container-fluid p-0">
-    <section class="banner">
-        <h1 class="bannerText m-0">Rohan Gosavi</h1>
-        <h2 class="m-0">Check out my photos and reels</h2>
+<div #contentSection class="content-section container-fluid p-3 p-md-5" (scroll)="onScroll()">
+    <section id="targetElement1" class="banner scrollable in-view"
+        [ngClass]="{ 'in-view': element1InView, 'out-of-view': !element1InView }">
+        <div class="bannerText source-sans">
+            <h1 class="heading d-block m-0">Front
+                End Software Developer</h1>
+            <!-- <h3 class="line2">Currently working as a Senior Software Developer.</h3> -->
+            <p class="intro mt-2">Passionate Senior Front End Developer with a knack for crafting seamless user
+                experiences
+                and translating
+                complex requirements into elegant, efficient code. Equipped with a robust skill set and a proven track
+                record of delivering high-quality solutions, I thrive on pushing boundaries and driving innovation in
+                web development.</p>
+        </div>
+        <picture class="heroSvg">
+            <img loading="lazy" src="assets/images/source-code-animate.svg" alt="tech svg image">
+        </picture>
+        <img loading="lazy" class="goi" src="assets/images/gateway-of-india.svg" alt="gateway of india">
     </section>
-    <section class="grid-container p-3">
-        <span *ngFor="let post of posts" class="image-container" title=".:: {{extractCaption(post.caption)}} ::.">
-            <img *ngIf="post.media_url.includes('.webp')" [src]="post.media_url" alt="{{extractCaption(post.caption)}}"
-                class="img-item">
-            <!-- <video *ngIf="post.media_url.includes('.mp4')" class="video-item" controls playOnHover>
-            <source src="{{post.media_url}}" type="video/mp4">
-          </video> -->
-          <caption class="d-flex justify-content-between">.:: {{extractCaption(post.caption)}} ::. <span>{{post.timestamp | date}}</span></caption>
-        </span>
+    <section id="targetElement2" class="skills scrollable out-of-view"
+        [ngClass]="{ 'in-view': element2InView, 'out-of-view': !element2InView }">
+        <h2 class="heading animate-up m-0">Skills &
+            Experties</h2>
+        <p class="intro mt-2 text-md-center">
+            <span appIntoView>Experienced UI/Front-End Developer boasting a robust 8-year track record of
+                excellence in
+                crafting responsive websites and web applications. Adept in seamlessly integrating REST APIs, adeptly
+                managing multinational clients, and providing effective team leadership. Demonstrated proficiency across
+                all
+                phases of the Software Development Life Cycle (SDLC).</span>
+        </p>
+        <div class="skillset">
+            <picture>
+                <span>
+                    <!-- html5 -->
+                    <svg fill="#ffffff" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M2 0h28l-2.547 28.75-11.484 3.25-11.417-3.25zM11.375 13l-0.307-3.625 13.411 0.005 0.307-3.495-17.573-0.005 0.932 10.682h12.167l-0.432 4.568-3.88 1.068-3.938-1.078-0.255-2.813h-3.479l0.443 5.563 7.229 1.932 7.172-1.927 0.99-10.875z">
+                            </path>
+                        </g>
+                    </svg>
+                </span>
+                <span>
+                    <!-- css3 -->
+                    <svg fill="#ffffff" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <title>css3</title>
+                            <path
+                                d="M24.235 6.519l-16.47-0.004 0.266 3.277 12.653 0.002-0.319 3.394h-8.298l0.3 3.215h7.725l-0.457 4.403-3.636 1.005-3.694-1.012-0.235-2.637h-3.262l0.362 4.817 6.829 2.128 6.714-1.912 1.521-16.675zM2.879 1.004h26.242l-2.387 26.946-10.763 3.045-10.703-3.047z">
+                            </path>
+                        </g>
+                    </svg>
+                </span>
+                <span>
+                    <!-- angular -->
+                    <svg fill="#ffffff" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <title>angular</title>
+                            <path
+                                d="M24.826 23.885h-3.297l-1.777-4.377h-7.507l-1.777 4.379h-3.299l8.83-19.571zM15.999 1.004l-14.145 4.976 2.157 18.458 11.989 6.557 11.992-6.551 2.154-18.462-14.147-4.977zM13.414 16.806h5.171l-2.587-6.133z">
+                            </path>
+                        </g>
+                    </svg>
+                </span>
+                <span>
+                    <!-- ngrx -->
+                    <img loading="lazy" width="76" src="assets/images/ngrx-logo-white.svg" alt="ngrx logo">
+                </span>
+                <span>
+                    <!-- rxjs -->
+                    <svg viewBox="0 0 500 500">
+                        <path
+                            d="M 43.313 310.049 C 33.786 281.053 31.037 250.446 36.534 218.945 C 38.916 205.879 42.58 193.35 46.611 180.641 C 46.611 180.641 71.896 99.56 157.461 62.51 C 157.461 62.51 186.96 47.296 231.3 46.222 C 231.3 46.222 225.254 40.495 221.406 37.989 C 200.519 24.386 169.371 19.911 150.499 39.063 C 144.819 44.791 140.055 51.055 134.742 56.783 C 128.695 63.226 121.366 68.596 112.938 71.639 C 105.609 74.323 98.28 73.786 90.768 75.039 C 83.073 76.292 75.194 78.977 68.965 83.81 C 62.185 89.179 59.437 96.339 58.704 104.572 C 57.971 111.016 58.154 117.638 57.788 124.082 C 56.872 143.054 50.642 148.424 36.717 158.984 C 30.854 163.28 25.907 169.007 22.243 175.093 C 11.249 194.065 28.839 213.754 29.755 232.906 C 29.938 236.843 29.572 240.781 28.106 244.54 C 26.64 248.656 23.708 251.341 21.327 254.742 C 18.028 259.217 15.83 264.586 16.746 270.135 C 17.662 275.683 20.594 280.874 23.342 285.707 C 28.655 294.298 35.251 301.995 42.214 309.333 C 42.58 309.333 42.947 309.691 43.313 310.049"
+                            style="stroke-linecap: square; stroke-linejoin: round; fill-rule: nonzero; fill: rgb(255, 255, 255);"
+                            transform="matrix(1, 0, 0, 1, 7.105427357601002e-15, 7.105427357601002e-15)"></path>
+                        <path
+                            d="M 392.903 378.78 C 435.045 360.881 453.001 329.916 453.001 329.916 C 492.394 277.473 479.018 222.166 479.018 222.166 C 453.917 275.504 431.014 290.181 431.014 290.181 C 492.76 198.361 431.38 142.875 431.38 142.875 C 456.482 195.139 423.135 258.859 423.135 258.859 C 395.102 316.492 355.343 337.076 355.343 337.076 C 399.683 345.13 432.296 315.955 432.296 315.955 C 368.718 383.076 299.826 379.854 299.826 379.854 C 328.775 411.534 372.199 408.85 372.199 408.85 C 315.4 421.916 262.082 403.48 218.292 367.862 C 210.046 361.239 202.168 354.08 194.839 346.383 C 194.839 346.383 188.243 339.582 186.96 337.792 L 186.777 337.613 C 185.861 370.725 221.223 401.511 221.223 401.511 C 176.883 383.612 156.545 344.772 156.545 344.772 C 156.545 344.772 126.68 295.014 148.3 238.275 C 169.921 181.536 235.331 169.365 235.331 169.365 C 289.382 194.96 335.188 203.015 335.188 203.015 C 431.747 218.766 426.25 172.587 426.25 172.587 C 427.166 132.852 365.786 90.611 365.786 90.611 C 256.402 11.32 157.461 62.51 157.461 62.51 C 71.896 99.56 46.611 180.641 46.611 180.641 C 42.58 193.35 38.916 205.879 36.534 218.945 C 27.19 272.104 41.298 322.399 71.896 367.146 C 119.534 436.593 196.854 460.577 196.854 460.577 C 311.369 498.522 389.605 442.678 389.605 442.678 C 461.612 394.352 476.087 338.508 476.087 338.508 C 418.005 382.897 392.903 378.78 392.903 378.78 Z M 303.49 117.638 C 308.987 117.638 313.384 121.934 313.384 127.303 C 313.384 132.673 308.987 136.969 303.49 136.969 C 297.994 136.969 293.596 132.673 293.596 127.303 C 293.596 121.934 297.994 117.638 303.49 117.638 Z"
+                            style="stroke-linecap: square; stroke-linejoin: round; fill-rule: nonzero; fill: rgb(255, 255, 255);"
+                            transform="matrix(1, 0, 0, 1, 7.105427357601002e-15, 7.105427357601002e-15)"></path>
+                        <path
+                            d="M 426.067 172.408 C 426.983 132.673 365.603 90.432 365.603 90.432 C 256.219 11.32 157.278 62.51 157.278 62.51 C 71.713 99.56 46.428 180.641 46.428 180.641 C 41.481 194.423 37.084 215.544 37.084 215.544 C 31.77 242.034 34.152 266.555 34.152 266.555 C 36.351 290.002 41.664 305.753 41.664 305.753 C 47.161 322.578 49.726 327.769 49.726 327.769 C 49.543 327.232 48.627 323.294 48.627 323.294 C 48.627 323.294 40.931 287.139 48.077 252.415 C 48.077 252.415 54.307 216.26 79.592 188.338 C 79.592 188.338 120.634 131.241 197.038 153.614 C 197.038 153.614 213.528 159.342 219.208 162.206 C 224.888 164.891 234.782 169.007 234.782 169.007 C 288.833 194.602 334.638 202.657 334.638 202.657 C 431.563 218.587 426.067 172.408 426.067 172.408 Z M 303.49 137.148 C 297.994 137.148 293.596 132.852 293.596 127.482 C 293.596 122.113 297.994 117.817 303.49 117.817 C 308.987 117.817 313.384 122.113 313.384 127.482 C 313.384 132.852 308.987 137.148 303.49 137.148 Z"
+                            style="stroke-linecap: square; stroke-linejoin: round; fill-rule: nonzero; fill: rgb(255, 255, 255);"
+                            transform="matrix(1, 0, 0, 1, 7.105427357601002e-15, 7.105427357601002e-15)"></path>
+                        <path
+                            d="M 240.828 100.455 L 178.349 81.483 C 177.982 81.483 176.15 80.588 172.852 81.483 C 172.852 81.483 136.024 90.611 142.437 110.3 C 142.437 110.3 146.285 122.65 156.729 134.642 L 225.437 131.42 L 240.828 100.455 Z"
+                            style="stroke-linecap: square; stroke-linejoin: round; fill-rule: nonzero; fill: rgb(255, 255, 255);"
+                            transform="matrix(1, 0, 0, 1, 7.105427357601002e-15, 7.105427357601002e-15)"></path>
+                    </svg>
+
+
+
+                </span>
+                <span>
+                    <!-- javascript -->
+                    <svg fill="#ffffff" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M0 0h32v32h-32zM29.38 24.37c-0.234-1.464-1.188-2.688-4.005-3.833-0.979-0.458-2.073-0.781-2.396-1.521-0.12-0.438-0.141-0.677-0.063-0.938 0.203-0.865 1.219-1.12 2.021-0.88 0.521 0.161 1 0.557 1.302 1.198 1.38-0.901 1.38-0.901 2.339-1.5-0.359-0.557-0.536-0.802-0.781-1.036-0.839-0.943-1.958-1.422-3.776-1.38l-0.943 0.12c-0.901 0.219-1.76 0.698-2.281 1.339-1.516 1.719-1.078 4.719 0.76 5.964 1.818 1.359 4.479 1.656 4.823 2.938 0.318 1.563-1.161 2.063-2.625 1.88-1.078-0.24-1.677-0.781-2.339-1.781l-2.438 1.401c0.276 0.641 0.599 0.917 1.078 1.479 2.318 2.339 8.12 2.219 9.161-1.339 0.036-0.12 0.318-0.943 0.099-2.198zM17.401 14.708h-2.995c0 2.583-0.016 5.151-0.016 7.74 0 1.641 0.083 3.151-0.182 3.615-0.443 0.917-1.573 0.802-2.089 0.641-0.526-0.26-0.797-0.62-1.104-1.141-0.089-0.141-0.151-0.26-0.172-0.26l-2.432 1.5c0.406 0.839 1 1.563 1.766 2.021 1.141 0.682 2.672 0.901 4.276 0.542 1.042-0.302 1.943-0.922 2.411-1.88 0.682-1.24 0.536-2.76 0.531-4.464 0.016-2.74 0-5.479 0-8.24z">
+                            </path>
+                        </g>
+                    </svg>
+                </span>
+                <span>
+                    <!-- jquery -->
+                    <svg fill="#ffffff" viewBox="0 -0.5 25 25" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="m1.582 5.638c-2.206 3.17-1.931 7.294-.246 10.663.04.08.08.16.123.24.026.05.051.102.08.151.015.03.033.059.049.087.029.054.058.105.088.16q.08.138.16.275c.03.05.06.101.092.151q.091.147.186.292c.026.042.052.08.08.122.088.131.178.262.27.39l.008.01c.014.021.031.041.046.062.08.11.16.22.246.328l.093.118q.112.141.228.28l.087.104c.103.122.209.24.32.362l.006.006.012.013c.106.115.214.228.32.34l.103.104c.085.085.17.169.258.252.035.034.07.068.106.1.116.11.234.217.353.32.002.002.003.004.006.005.02.018.042.035.062.052q.16.137.32.271l.133.106q.132.106.267.209l.143.109c.099.073.199.145.3.214.037.026.072.052.11.08l.03.022c.096.066.194.13.291.193.042.028.08.057.126.08.15.094.302.189.456.279l.126.071c.113.066.226.13.342.192.062.034.126.066.189.098.08.043.16.086.245.127l.057.027.1.049q.192.092.388.18l.08.037q.224.098.453.189l.11.043c.141.054.284.108.427.16l.054.018c.16.055.32.106.48.156l.115.034c.128.046.292.094.461.132l.031.006c10.667 1.945 13.766-6.41 13.766-6.41-2.602 3.39-7.222 4.285-11.6 3.289-.166-.038-.326-.089-.489-.137l-.122-.037q-.24-.073-.47-.153l-.065-.023c-.139-.049-.278-.101-.414-.154l-.116-.046c-.15-.059-.3-.122-.448-.186l-.09-.04c-.127-.058-.253-.115-.378-.175l-.109-.053c-.098-.048-.195-.098-.292-.149-.065-.034-.131-.066-.195-.102-.118-.063-.234-.13-.35-.197l-.118-.066c-.154-.09-.306-.185-.456-.279-.042-.026-.08-.054-.123-.08-.109-.07-.218-.142-.325-.216-.035-.023-.07-.05-.105-.074q-.155-.109-.307-.222c-.046-.034-.091-.069-.136-.103-.093-.071-.186-.142-.277-.217l-.123-.099c-.116-.096-.231-.191-.345-.29l-.038-.032c-.122-.108-.24-.218-.362-.33l-.102-.098q-.133-.126-.26-.255l-.102-.102q-.16-.167-.32-.338l-.016-.017c-.11-.121-.218-.244-.324-.369l-.083-.102c-.08-.095-.16-.191-.233-.288-.029-.034-.058-.07-.086-.106-.092-.119-.182-.24-.27-.358-2.43-3.314-3.303-7.886-1.36-11.64z">
+                            </path>
+                            <path
+                                d="m8.429 2.966c-.754 1.166-1.202 2.592-1.202 4.121 0 1.347.347 2.613.958 3.714l-.02-.039c.235.457.469.843.727 1.21l-.022-.032c.244.387.515.723.82 1.024l.001.001c.115.126.235.25.358.371.031.032.062.062.094.094.119.115.24.229.366.339.005.004.01.01.015.013.138.122.282.24.427.353l.097.076c.146.112.294.222.446.326l.013.01c.067.046.136.09.204.134.033.022.064.044.097.064.109.07.219.138.331.203l.046.027c.097.056.194.11.293.16.034.019.069.036.104.054.068.035.136.071.205.106l.03.014c.141.07.282.136.427.199.031.014.062.026.094.039.115.049.233.097.35.142l.15.055c.106.039.214.076.32.112l.146.046c.126.048.281.094.441.13l.024.004c8.236 1.365 10.138-4.977 10.138-4.977-1.714 2.468-5.034 3.646-8.575 2.727-.16-.042-.312-.086-.466-.135-.047-.014-.094-.03-.14-.046-.11-.035-.218-.074-.326-.113l-.147-.054c-.118-.046-.235-.093-.351-.142-.032-.014-.064-.026-.094-.04-.146-.063-.289-.13-.43-.199-.073-.036-.144-.074-.215-.11l-.124-.064q-.138-.075-.273-.154c-.021-.012-.043-.024-.065-.037q-.167-.098-.33-.202c-.034-.022-.066-.045-.099-.066-.072-.046-.143-.094-.214-.142-.152-.105-.299-.214-.445-.326l-.1-.08c-1.549-1.211-2.718-2.843-3.34-4.723l-.02-.07c-.236-.694-.373-1.494-.373-2.325 0-1.338.353-2.594.972-3.679l-.019.037z">
+                            </path>
+                            <path
+                                d="m14.188.97c-.504.747-.804 1.668-.804 2.659 0 .715.156 1.393.436 2.002l-.012-.03c.73 1.627 2.059 2.876 3.699 3.484l.045.015c.068.026.135.048.205.071l.09.028c.078.029.176.058.276.081l.017.003c4.547.88 5.781-2.334 6.11-2.806-1.081 1.556-2.896 1.929-5.124 1.389-.176-.043-.37-.106-.539-.167-.262-.093-.474-.183-.679-.283l.039.017c-.428-.209-.795-.436-1.136-.697l.016.012c-1.994-1.513-3.232-4.4-1.931-6.749z">
+                            </path>
+                        </g>
+                    </svg>
+
+
+
+                </span>
+                <span>
+                    <!-- react -->
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <title>react</title>
+                            <rect width="24" height="24" fill="none"></rect>
+                            <path
+                                d="M12,10.11A1.87,1.87,0,1,1,10.13,12,1.88,1.88,0,0,1,12,10.11M7.37,20c.63.38,2-.2,3.6-1.7a24.22,24.22,0,0,1-1.51-1.9A22.7,22.7,0,0,1,7.06,16c-.51,2.14-.32,3.61.31,4m.71-5.74-.29-.51a7.91,7.91,0,0,0-.29.86c.27.06.57.11.88.16l-.3-.51m6.54-.76.81-1.5-.81-1.5c-.3-.53-.62-1-.91-1.47C13.17,9,12.6,9,12,9s-1.17,0-1.71,0c-.29.47-.61.94-.91,1.47L8.57,12l.81,1.5c.3.53.62,1,.91,1.47.54,0,1.11,0,1.71,0s1.17,0,1.71,0c.29-.47.61-.94.91-1.47M12,6.78c-.19.22-.39.45-.59.72h1.18c-.2-.27-.4-.5-.59-.72m0,10.44c.19-.22.39-.45.59-.72H11.41c.2.27.4.5.59.72M16.62,4c-.62-.38-2,.2-3.59,1.7a24.22,24.22,0,0,1,1.51,1.9,22.7,22.7,0,0,1,2.4.36c.51-2.14.32-3.61-.32-4m-.7,5.74.29.51a7.91,7.91,0,0,0,.29-.86c-.27-.06-.57-.11-.88-.16l.3.51m1.45-7c1.47.84,1.63,3.05,1,5.63,2.54.75,4.37,2,4.37,3.68s-1.83,2.93-4.37,3.68c.62,2.58.46,4.79-1,5.63s-3.45-.12-5.37-1.95c-1.92,1.83-3.91,2.79-5.38,1.95s-1.62-3-1-5.63c-2.54-.75-4.37-2-4.37-3.68S3.08,9.07,5.62,8.32c-.62-2.58-.46-4.79,1-5.63s3.46.12,5.38,1.95c1.92-1.83,3.91-2.79,5.37-1.95M17.08,12A22.51,22.51,0,0,1,18,14.26c2.1-.63,3.28-1.53,3.28-2.26S20.07,10.37,18,9.74A22.51,22.51,0,0,1,17.08,12M6.92,12A22.51,22.51,0,0,1,6,9.74c-2.1.63-3.28,1.53-3.28,2.26S3.93,13.63,6,14.26A22.51,22.51,0,0,1,6.92,12m9,2.26-.3.51c.31,0,.61-.1.88-.16a7.91,7.91,0,0,0-.29-.86l-.29.51M13,18.3c1.59,1.5,3,2.08,3.59,1.7s.83-1.82.32-4a22.7,22.7,0,0,1-2.4.36A24.22,24.22,0,0,1,13,18.3M8.08,9.74l.3-.51c-.31,0-.61.1-.88.16a7.91,7.91,0,0,0,.29.86l.29-.51M11,5.7C9.38,4.2,8,3.62,7.37,4s-.82,1.82-.31,4a22.7,22.7,0,0,1,2.4-.36A24.22,24.22,0,0,1,11,5.7Z">
+                            </path>
+                        </g>
+                    </svg>
+                </span>
+                <span>
+                    <!-- git -->
+                    <svg viewBox="-4.8 -4.8 57.60 57.60" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(3.84,3.84), scale(0.84)">
+                            <rect x="-4.8" y="-4.8" width="57.60" height="57.60" rx="5.76" fill="#fff" strokewidth="0">
+                            </rect>
+                        </g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC"
+                            stroke-width="1.7280000000000002">
+                            <defs>
+                                <style>
+                                    .a {
+                                        fill: none;
+                                        stroke: #000000;
+                                        stroke-linecap: round;
+                                        stroke-linejoin: round;
+                                    }
+                                </style>
+                            </defs>
+                            <path class="a"
+                                d="M4.21,22.12a2.87,2.87,0,0,0,0,3.77L22.12,43.8a2.87,2.87,0,0,0,3.77,0l17.9-17.91a2.85,2.85,0,0,0,0-3.77L25.89,4.21A2.68,2.68,0,0,0,24,3.51h0a2.66,2.66,0,0,0-1.88.71Z">
+                            </path>
+                            <line class="a" x1="26.33" y1="17.85" x2="30.15" y2="21.67"></line>
+                            <line class="a" x1="17.4" y1="8.92" x2="21.67" y2="13.19"></line>
+                            <circle class="a" cx="24" cy="32.41" r="3.3"></circle>
+                            <circle class="a" cx="24" cy="15.52" r="3.3"></circle>
+                            <circle class="a" cx="32.48" cy="24" r="3.3"></circle>
+                            <line class="a" x1="24" y1="29.11" x2="24" y2="18.82"></line>
+                        </g>
+                        <g id="SVGRepo_iconCarrier">
+                            <defs>
+                                <style>
+                                    .a {
+                                        fill: none;
+                                        stroke: #000000;
+                                        stroke-linecap: round;
+                                        stroke-linejoin: round;
+                                    }
+                                </style>
+                            </defs>
+                            <path class="a"
+                                d="M4.21,22.12a2.87,2.87,0,0,0,0,3.77L22.12,43.8a2.87,2.87,0,0,0,3.77,0l17.9-17.91a2.85,2.85,0,0,0,0-3.77L25.89,4.21A2.68,2.68,0,0,0,24,3.51h0a2.66,2.66,0,0,0-1.88.71Z">
+                            </path>
+                            <line class="a" x1="26.33" y1="17.85" x2="30.15" y2="21.67"></line>
+                            <line class="a" x1="17.4" y1="8.92" x2="21.67" y2="13.19"></line>
+                            <circle class="a" cx="24" cy="32.41" r="3.3"></circle>
+                            <circle class="a" cx="24" cy="15.52" r="3.3"></circle>
+                            <circle class="a" cx="32.48" cy="24" r="3.3"></circle>
+                            <line class="a" x1="24" y1="29.11" x2="24" y2="18.82"></line>
+                        </g>
+                    </svg>
+                </span>
+                <span>
+                    <!-- gitlab -->
+                    <svg viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(0,0), scale(1)">
+                            <path transform="translate(-2.4, -2.4), scale(1.7999999999999998)" fill="#fff"
+                                d="M9.166.33a2.25 2.25 0 00-2.332 0l-5.25 3.182A2.25 2.25 0 00.5 5.436v5.128a2.25 2.25 0 001.084 1.924l5.25 3.182a2.25 2.25 0 002.332 0l5.25-3.182a2.25 2.25 0 001.084-1.924V5.436a2.25 2.25 0 00-1.084-1.924L9.166.33z"
+                                strokewidth="0"></path>
+                        </g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M20.6866 13.8822L13.1333 19.1915C12.4433 19.6766 11.5231 19.6766 10.833 19.1915L3.27976 13.8822C3.16308 13.7992 3.07653 13.6826 3.0325 13.5492C2.98846 13.4157 2.9892 13.2722 3.03459 13.1392L4.03161 10.1514L6.02563 4.2154C6.04497 4.16703 6.07576 4.12372 6.11552 4.08893C6.18028 4.03172 6.26481 4 6.35252 4C6.44022 4 6.52475 4.03172 6.58951 4.08893C6.6315 4.12819 6.66244 4.17716 6.67941 4.2312L8.21482 8.78981C8.48886 9.60346 9.25164 10.1514 10.1102 10.1514H13.8549C14.7141 10.1514 15.4772 9.60271 15.7508 8.78828L17.2869 4.2154C17.3063 4.16703 17.3371 4.12372 17.3768 4.08893C17.4416 4.03172 17.5261 4 17.6138 4C17.7015 4 17.7861 4.03172 17.8508 4.08893C17.8928 4.12819 17.9238 4.17716 17.9407 4.2312L19.9347 10.1672L20.9726 13.1392C21.0139 13.2763 21.0084 13.4227 20.9569 13.5565C20.9053 13.6904 20.8105 13.8046 20.6866 13.8822Z"
+                                stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </span>
+                <span>
+                    <!-- svn -->
+                    <svg fill="#ffffff" viewBox="0 -4.5 33 33" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="m2.726 17.352c0 .184-.149.333-.333.333s-.333-.149-.333-.333.149-.333.333-.333.333.149.333.333z">
+                            </path>
+                            <path
+                                d="m1.596 19.413c0 .184-.149.333-.333.333s-.333-.149-.333-.333.149-.333.333-.333.333.149.333.333z">
+                            </path>
+                            <path
+                                d="m1.596 17.352c0 .184-.149.333-.333.333s-.333-.149-.333-.333.149-.333.333-.333.333.149.333.333z">
+                            </path>
+                            <path
+                                d="m2.726 19.413c0 .184-.149.333-.333.333s-.333-.149-.333-.333.149-.333.333-.333.333.149.333.333z">
+                            </path>
+                            <path
+                                d="m32.426 0c-.383.107-.773.275-1.078.328-11.154 2.173-21.798 4.784-31.347 8.562v6.184c.509-.04 8.506-.858 9.707-.955 2.564-.208 11.177-1.157 14.528-.925.683.089 1.689.236 1.799.872.06.347-.24.654-.436.836-.055.059-.096.134-.182.16-1.602 1.076-3.456 1.95-5.438 2.525l-.141.035c-5.604 1.838-12.306 3.389-19.193 4.363l-.646.075v1.941h.715c7.049-1.13 13.723-2.892 20.195-4.574 3.984-1.035 7.96-2.576 11.666-3.939v-7.087c-.685.099-4.098.577-13.582 1.494-7.68.743-9.798.53-10.382.348-.023-.015-.042-.03-.06-.045l.001.001c-.081-.037-.145-.1-.181-.179l-.001-.002c-.219-.236-.037-.663.16-.8.043-.088.112-.157.197-.199l.003-.001c.7-.558 1.504-1.029 2.371-1.376l.064-.023c1.527-.69 3.405-1.377 5.336-1.938l.318-.079c.987-.287 1.975-.583 2.98-.854 3.356-.964 7.67-1.914 12.061-2.632l.713-.096v-2.018z">
+                            </path>
+                        </g>
+                    </svg>
+
+                </span>
+                <span>
+                    <!-- rest api -->
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <rect width="24" height="24" fill="none"></rect>
+                            <path
+                                d="M20,6H4A2,2,0,0,0,2,8v8a2,2,0,0,0,2,2H20a2,2,0,0,0,2-2V8A2,2,0,0,0,20,6ZM9.29,14.8,9,13.73H7.16L6.87,14.8H5.17L7,9.07H9.09L11,14.8Zm6.34-3.14a1.7,1.7,0,0,1-.36.64,1.82,1.82,0,0,1-.67.44,2.75,2.75,0,0,1-1,.17h-.44V14.8H11.6V9.09h2a2.43,2.43,0,0,1,1.62.47,1.67,1.67,0,0,1,.55,1.35A2.36,2.36,0,0,1,15.63,11.66Zm2.58,3.14H16.66V9.09h1.55ZM8.45,11.53l.24.93H7.48l.24-.93c0-.13.08-.28.12-.47s.09-.38.13-.57a4.63,4.63,0,0,0,.1-.48c0,.13.07.29.11.5l.15.58Zm5.59-1a.57.57,0,0,1,.16.43.75.75,0,0,1-.11.42.59.59,0,0,1-.27.22.9.9,0,0,1-.37.07h-.31V10.34h.4A.63.63,0,0,1,14,10.51Z"
+                                fill-rule="evenodd"></path>
+                        </g>
+                    </svg>
+                </span>
+                <span>
+                    <!-- bootstrap -->
+                    <svg fill="#ffffff" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M26.667 0h-21.333c-2.943 0.010-5.323 2.391-5.333 5.333v21.333c0 2.932 2.401 5.333 5.333 5.333h21.333c2.932 0 5.333-2.401 5.333-5.333v-21.333c0-2.932-2.401-5.333-5.333-5.333zM23.75 22.474c-0.266 0.641-0.688 1.208-1.229 1.646-0.563 0.453-1.271 0.828-2.146 1.094-0.87 0.271-1.906 0.406-3.109 0.406h-8.573v-18.667h9.068c1.677 0 3.021 0.375 4.026 1.146 1.016 0.771 1.516 1.927 1.516 3.479 0 0.943-0.229 1.745-0.688 2.411s-1.12 1.182-1.974 1.542v0.063c1.141 0.24 2.021 0.781 2.599 1.62s0.88 1.901 0.88 3.182c0 0.719-0.141 1.401-0.401 2.036l0.031 0.036zM20.047 17.875c-0.542-0.5-1.313-0.745-2.302-0.745h-5.766v5.823h5.781c0.984 0 1.76-0.255 2.307-0.771s0.823-1.25 0.823-2.188c-0.010-0.922-0.276-1.635-0.823-2.12h-0.026zM19.25 14.109c0.526-0.448 0.786-1.089 0.786-1.927 0-0.938-0.234-1.604-0.708-1.984-0.469-0.38-1.146-0.578-2.036-0.578h-5.333v5.151h5.333c0.776 0 1.443-0.229 1.953-0.661z">
+                            </path>
+                        </g>
+                    </svg>
+                </span>
+                <span>
+                    <!-- scss -->
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M14 19H16C17.1046 19 18 18.1046 18 17V14.5616C18 13.6438 18.6246 12.8439 19.5149 12.6213L21.0299 12.2425C21.2823 12.1794 21.2823 11.8206 21.0299 11.7575L19.5149 11.3787C18.6246 11.1561 18 10.3562 18 9.43845V5H14"
+                                stroke="#fff" stroke-width="2"></path>
+                            <path
+                                d="M10 5H8C6.89543 5 6 5.89543 6 7V9.43845C6 10.3562 5.37541 11.1561 4.48507 11.3787L2.97014 11.7575C2.71765 11.8206 2.71765 12.1794 2.97014 12.2425L4.48507 12.6213C5.37541 12.8439 6 13.6438 6 14.5616V19H10"
+                                stroke="#fff" stroke-width="2"></path>
+                        </g>
+                    </svg>
+                </span>
+            </picture>
+        </div>
+        <span class="apiSvg"></span>
+        <span class="screenSvg"></span>
+        <span class="availSvg"></span>
     </section>
-</section>
+    <section id="targetElement3" class="experience scrollable out-of-view"
+        [ngClass]="{ 'in-view': element3InView, 'out-of-view': !element3InView }">
+        <h2 class="heading m-0">Experience</h2>
+        <div class="exp mt-4" #targetDiv appHScrollOnHover>
+            <article class="company1 cInfo" (mousemove)="onMouseMove($event)">
+                <div class="details-wrapper">
+                    <span class="cLogo1 cLogo"><img loading="lazy" src="assets/images/kanni-logo.webp"
+                            alt="Kanini Logo"></span>
+                    <span class="cName text-bold d-flex justify-content-between flex-wrap pb-1"><span
+                            class="designation">Senior
+                            Developer
+                        </span>Kanini Software Solutions Pvt
+                        Ltd</span>
+                    <span class="roleDetails d-inline-block mt-3">
+                        <ul>
+                            <li>
+                                Development of a sophisticated web application for a US-based client, utilizing
+                                <strong>Angular,
+                                    NGRx, HTML, and CSS</strong> to ensure a seamless and responsive user interface
+                            <li>
+                                Integrated multiple intricate <strong>REST APIs</strong> on the frontend of the
+                                application.
+                            </li>
+                            <li>
+                                Showcased <strong>leadership</strong> abilities by effectively supervising team members
+                                to ensure the
+                                success
+                                of the project
+                            </li>
+                            <li>
+                                Applied practical analysis to identify areas for improvement and implemented effective
+                                solutions, thereby expediting project completion
+                            </li>
+                        </ul>
+                    </span>
+                </div>
+            </article>
+            <article class="company2 cInfo" (mousemove)="onMouseMove($event)">
+                <div class="details-wrapper">
+                    <span class="cLogo2 cLogo"><img loading="lazy" src="assets/images/scorg-logo.png"
+                            alt="Kanini Logo"></span>
+
+                    <span class="cName text-bold d-flex justify-content-between flex-wrap pb-1"><span
+                            class="designation">UI/UX
+                            Developer </span>SCORG Technologies Pvt
+                        Ltd</span>
+                    <span class="roleDetails d-inline-block mt-3">
+                        <ul>
+                            <li>Development of Complex Health care application for Multiple Hospitals across India using
+                                <strong>Angular, HTML, CSS</strong>
+                            </li>
+                            <li>Integration of multiple <strong>complex REST APIs</strong> at the front end</li>
+                            <li>Demonstrated impactful leadership by guiding team members through projects to ensure the
+                                project's quality</li>
+                            <li>Employed effective <strong>troubleshooting skills</strong> to identify improvement
+                                opportunities and
+                                implemented solutions</li>
+                            <li>Built innovative web applications using <strong>Agile methodologies</strong>, oversee
+                                all aspects of
+                                project
+                                development, and identify opportunities to enhance the user experience (UX)</li>
+                        </ul>
+                    </span>
+                </div>
+            </article>
+            <article class="company3 cInfo" (mousemove)="onMouseMove($event)">
+                <div class="details-wrapper">
+                    <span class="cLogo3 cLogo"><img loading="lazy" src="assets/images/pivotroots-logo.svg"
+                            alt="Kanini Logo"></span>
+
+                    <span class="cName text-bold d-flex justify-content-between flex-wrap pb-1"><span
+                            class="designation">Experiential
+                            Developer </span>Pivotroots Pvt
+                        Ltd</span>
+                    <span class="roleDetails d-inline-block mt-3">
+                        <ul>
+                            <li>Developing and implementing high-quality front-end web applications using
+                                <strong>Angular,
+                                    Vue.js,
+                                    Pug, ES6</strong> to ensure a seamless user experience across multiple platforms
+                            </li>
+                            <li>Writing <strong>semantic HTML and CSS</strong> to ensure accessibility and ease of
+                                maintenance, while
+                                adhering to W3C standards</li>
+                            <li>Optimizing website performance through efficient code and content delivery</li>
+                        </ul>
+                    </span>
+                </div>
+            </article>
+            <article class="company4 cInfo" (mousemove)="onMouseMove($event)">
+                <div class="details-wrapper">
+                    <span class="cLogo4 cLogo"><img loading="lazy" src="assets/images/emediscene-logo.png"
+                            alt="Kanini Logo"></span>
+
+                    <span class="cName text-bold d-flex justify-content-between flex-wrap"><span
+                            class="designation pb-2">Web
+                            Developer
+                        </span>Emediscene</span>
+                    <span class="roleDetails d-inline-block mt-3">
+                        <ul>
+                            <li>Creating and deploying top-tier front-end web applications utilizing <strong>Angular,
+                                    HTML, CSS</strong>,
+                                aiming to deliver a seamless user experience across diverse browsers and platforms</li>
+                            <li>Leveraged my <strong>client relationship</strong> skills to acquire new multinational
+                                clients,
+                                contributing
+                                to a notable increase in the company's overall revenue</li>
+                            <li><strong>Managing a team of 10 members</strong>, mentoring and training other developers
+                                as a SME</li>
+                            <li>Individual Contributor (IC) for <strong>8 countries</strong></li>
+                            <li>Collaborating with clients to plan project work estimates</li>
+                        </ul>
+                    </span>
+                </div>
+            </article>
+            <article class="company5 cInfo" (mousemove)="onMouseMove($event)">
+                <div class="details-wrapper">
+                    <span class="cLogo5 cLogo"><img loading="lazy" src="assets/images/accenture-logo.png"
+                            alt="Kanini Logo"></span>
+
+                    <span class="cName text-bold d-flex justify-content-between flex-wrap"><span
+                            class="designation pb-2">Web
+                            Developer
+                        </span>Accenture Services Pvt Ltd</span>
+                    <span class="roleDetails d-inline-block mt-3">
+                        <ul>
+                            <li>Development of Complex websites for multinational clients using <strong>HTML, CSS, JS,
+                                    JQuery,
+                                    Booststrap 4</strong></li>
+                            <li>Integration of multiple REST APIs at the front end</li>
+                            <li>Employed analytical tagging techniques to monitor website traffic, user behavior, and
+                                conversions, facilitating <strong>data-driven decision-making</strong></li>
+                            <li>Successfully delivered full projects and demonstrated ability to manage project
+                                timelines
+                                and ensure on-time delivery</li>
+                            <li>Worked collaboratively with <strong>cross-functional</strong> teams to achieve project
+                                goals</li>
+                            <li>Tracked and reported project progress to stakeholders to ensure alignment with business
+                                objectives</li>
+                        </ul>
+                    </span>
+                </div>
+            </article>
+            <article class="company6 cInfo" (mousemove)="onMouseMove($event)">
+                <div class="details-wrapper">
+                    <span class="cLogo6 cLogo"><img loading="lazy" src="assets/images/tis-logo.svg"
+                            alt="Kanini Logo"></span>
+
+                    <span class="cName text-bold d-flex justify-content-between flex-wrap"><span
+                            class="designation pb-2">Web
+                            Developer
+                        </span>Tata Interactive Systems Pvt
+                        Ltd</span>
+                    <span class="roleDetails d-inline-block mt-3">
+                        <ul>
+                            <li>Development of <strong>Complex E-Learning</strong> websites for Multiple e-learning
+                                solution platforms
+                                around
+                                the globe using <strong>HTML, CSS, JS, JQuery, Booststrap 4</strong></li>
+                            <li>Contributed to projects catering to multiple browsers and devices, ensuring flawless
+                                compatibility</li>
+                        </ul>
+                    </span>
+                </div>
+            </article>
+        </div>
+    </section>
+    <section id="targetElement4"
+        class="contact scrollable out-of-view no-animation d-flex justify-content-center align-items-center flex-wrap flex-md-nowrap"
+        [ngClass]="{ 'in-view': element4InView, 'out-of-view': !element4InView }">
+        <div class="myself d-flex justify-content-center align-items-center"><img loading="lazy" class="w-100"
+                src="assets/images/rgbg.png" alt="Rohan's Photo"></div>
+        <div class="info d-flex justify-content-center align-content-center flex-column text-center text-md-left">
+            <h2 class="heading">Would you like to do business me?</h2>
+            <h3 class="intro">You can contact me via:</h3>
+            <a class="email" href="email:rohang59@gmail.com"><span class="d-inline-block mr-2">rohang59@gmail.com</span>
+                <i class="fa fa-envelope-circle-check"></i></a>
+            <a class="phone" href="tel:+919766910182"><span class="d-inline-block mr-2">+91-9766910182</span> <i
+                    class="fa fa-phone-volume"></i></a>
+            <a class="linkedin" href="https://www.linkedin.com/in/rohan-gosavi/" target="_blank">
+                <span class="d-inline-block mr-2">LinkedIn</span>
+                <i class="fa-brands fa-linkedin"></i></a>
+            <span class="about">to know more <a href="about">about me<i
+                        class="fa-arrow-alt-circle-right fa ml-2"></i></a></span>
+        </div>
+    </section>
+    <div class="scroll-indicator"></div>
+</div>

@@ -1,0 +1,71 @@
+// Media query mixin
+@mixin respond($breakpoint) {
+  @if ($breakpoint == "small") {
+    @media (max-width: 768px) {
+      @content;
+    }
+  } @else if ($breakpoint == "medium") {
+    @media (max-width: 1024px) {
+      @content;
+    }
+  } @else if ($breakpoint == "large") {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+// Responsive flexbox mixin
+@mixin responsive-flex(
+  $direction: row,
+  $justify: flex-start,
+  $alignItems: center
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $alignItems;
+
+  @include respond(small) {
+    flex-direction: column; // Change layout on smaller screens
+  }
+}
+
+// Clearfix mixin
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// Responsive font size mixin
+@mixin responsive-font-size($base: 16px) {
+  font-size: $base;
+
+  @include respond(small) {
+    font-size: calc($base * 0.8); // Adjust font size for smaller screens
+  }
+}
+
+@mixin responsive-font-size-2($base: 12px, $vwMultiplier: 3) {
+    font-size: calc(#{$base} + #{$vwMultiplier}vw);
+  }
+
+//how to use
+//   .container {
+//     @include responsive-flex(column); // Example responsive flexbox layout
+
+//     @include respond(medium) {
+//       padding: 1rem; // Add padding on medium screens and larger
+//     }
+//   }
+
+//   .heading {
+//     @include responsive-font-size(1.5rem); // Set responsive font size
+//   }

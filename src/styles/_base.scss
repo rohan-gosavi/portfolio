@@ -1,0 +1,25 @@
+@import "/src/styles/variables";
+@import "/src/styles/mixins";
+
+:root {
+}
+
+html,
+head,
+body {
+  background-color: $primary-bg;
+  font-size: 16px;
+  scroll-behavior: smooth;
+  @include respond(small){
+      font-size: 14px;
+  }
+}
+
+div,
+span,
+p,
+a,
+button {
+  color: $primary-text;
+  margin: 0;
+}

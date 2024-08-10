@@ -1,16 +1,43 @@
-<section class="content-section container-fluid p-0">
+<div class="content-section container-fluid p-0">
     <section class="banner d-flex justify-content-center align-items-end p-3">
         <!-- <h1 class="bannerText m-0">Rohan Gosavi</h1> -->
         <h2 class="m-0 mb-4 ml-4">Check out my photos</h2>
     </section>
-    <section class="grid-container">
-        <span *ngFor="let post of posts" class="image-container" title=".:: {{extractCaption(post.caption)}} ::.">
-            <img *ngIf="post.media_url.includes('.webp')" [src]="post.media_url" alt="{{extractCaption(post.caption)}}"
-                class="img-item">
+    <form [formGroup]="accessTokenForm">
+        <div class="form-group justify-content-center mx-3 mt-3">
+            <div class="d-flex">
+                <input id="accessToken" type="password" formControlName="accessToken" class="form-control"
+                    placeholder="Enter your access token to get photos" />
+                <button type="button" class="submitBtn btn btn-primary" title="Submit"
+                    (click)="onSubmit()">&#9654;</button>
+            </div>
+            <div *ngIf="accessTokenForm.get('accessToken')?.invalid && accessTokenForm.get('accessToken')?.touched">
+                <small class="text-danger" *ngIf="accessTokenForm.get('accessToken')?.errors?.['required']">
+                    Access token is required.
+                </small>
+                <small class="text-danger" *ngIf="accessTokenForm.get('accessToken')?.errors?.['minlength']">
+                    Access token must be at least 10 characters long.
+                </small>
+            </div>
+        </div>
+    </form>
+
+    <section class="grid-container" *ngIf="posts.length; else postsNotFound">
+        <span *ngFor="let post of posts" class="image-container d-flex justify-content-center"
+            title=".:: {{extractCaption(post.caption)}} ::.">
+            <span class="loader"></span>
+            <img loading="lazy" *ngIf="post.media_url.includes('.webp')" [src]="post.media_url"
+                alt="{{extractCaption(post.caption)}}" class="img-item">
             <!-- <video *ngIf="post.media_url.includes('.mp4')" class="video-item" controls playOnHover>
-            <source src="{{post.media_url}}" type="video/mp4">
-          </video> -->
-          <caption class="d-flex justify-content-between"><span>.:: {{extractCaption(post.caption)}} ::. </span><span>{{post.timestamp | date}}</span></caption>
+                <source src="{{post.media_url}}" type="video/mp4">
+            </video> -->
+            <caption class="d-flex justify-content-between"><span>.:: {{extractCaption(post.caption)}} ::.
+                </span><span>{{post.timestamp | date}}</span></caption>
         </span>
     </section>
-</section>
+    <ng-template #postsNotFound>
+        <figure class="no-data d-flex justify-content-center mx-auto">
+            <img loading="lazy" src="assets/images/no-data.svg" alt="posts not found">
+        </figure>
+    </ng-template>
+</div>
